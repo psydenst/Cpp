@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:44:07 by psydenst          #+#    #+#             */
-/*   Updated: 2023/04/17 15:44:09 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/04/18 15:08:49 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int main(int argc, char **argv)
 	{
 		while (argv[i])
 		{
+			j = 0;
 			while(argv[i][j])
 			{
 				char c = toupper(argv[i][j]);
