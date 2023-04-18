@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 21:45:54 by psydenst          #+#    #+#             */
-/*   Updated: 2023/04/17 21:58:45 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/04/18 20:44:21 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <iomanip>
 #include <limits>
 #include "phonebook.hpp"
+#include "contacts.hpp"
 
 int main()
 {
@@ -34,5 +35,6 @@ int main()
 //  contact.getNumber(std::cin, str);
     std::cout << "Secret: ";
     std::getline(std::cin, str);
-//    contact.getSecret(std::cin, str);
+    std::cout << contact.getSecret() << std::endl;
 }
+

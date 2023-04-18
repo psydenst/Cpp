@@ -1,11 +1,4 @@
-class Contacts
-{
-    private:
-
-    public:
-
-    int number;
-};
+#include "contacts.hpp"
 
 class Phonebook
 {   
