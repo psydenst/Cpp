@@ -10,8 +10,33 @@ CC = c++
 
 RM = rm -rf
 
+
 $(NAME): $(SRCS)
 		$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
+
+rainbow :
+	@echo "$(red)R$(grn)A$(yel)I$(blu)N$(pnk)B$(cya)O$(wht)W$(rst)"
+	@echo "$(grn)$(ok) $(rst)"
+	@echo "$(yel)$(ck) $(rst)"
+	@echo "$(red)$(ko) $(rst)"
+.PHONY : rainbow
+
+#.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*. VISUALS .*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.
+ok:=✓
+ko:=✗
+ck:=・
+s:=\033[0
+red:=$s31m
+grn:=$s32m
+yel:=$s33m
+blu:=$s34m
+pnk:=$s35m
+cya:=$s36m
+wht:=$s37m
+rst:=$s00m
+ora:=$s38;2;255;153;0m
+#.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.
+
 
 clean:
 	$(RM) *.o

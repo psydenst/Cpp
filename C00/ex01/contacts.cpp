@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 16:48:30 by psydenst          #+#    #+#             */
-/*   Updated: 2023/04/18 20:37:39 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/04/24 21:25:11 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,3 +78,17 @@ void Contacts::setSecret(std::string secret)
 	return;
 }
 
+int Contacts::isEmpty(void)
+{
+	if (this->getFirstName() != "")
+		return (0);
+	if (this->getLastName() != "")
+		return (0);
+	if (this->getNickName () != "")
+		return (0);
+	if (this->getPhoneNumber() != "")
+		return (0);
+	if (this->getSecret() != "")
+		return (0);
+	return (1);
+}

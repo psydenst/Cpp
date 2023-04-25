@@ -3,6 +3,7 @@
 # define CONTACTS_HPP
 	
 #include <string>
+#include <iomanip>
 
 class Contacts
 {
@@ -24,6 +25,7 @@ class Contacts
 		void setNickName (std::string name);
 		void setPhoneNumber(std::string number);
 		void setSecret (std::string secret);
+		int isEmpty(void);
 
 	private:
 		std::string first_name;
