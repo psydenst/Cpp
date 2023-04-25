@@ -11,6 +11,20 @@ Phonebook::~Phonebook(void)
 {
 }
 
+int Phonebook::add_main(int index)
+{
+    this->add_contact(index);
+    if (this->contacts[index].isEmpty() == 0)
+    {
+        this->print_line();
+        index++;
+    }
+    else
+        std::cout << "\n\nEmpty field :/ . Try another command:  \n\n";
+    this->display_instructions();
+    return (index);
+}
+
 void Phonebook::add_contact(int index)
 {
     std::string str;
@@ -45,18 +59,36 @@ void Phonebook::display_instructions(void)
 }
 
 void Phonebook::display_contactsinfo(int i) // proteger caso eu coloque um numero da lista
-{   // que eu nao tenho adicionado ainda. 
-    std::cout << "FIRST NAME: ";
-    std::cout << this->contacts[i].getFirstName() << std::endl;
-    std::cout << "LAST NAME: ";
-    std::cout << this->contacts[i].getLastName() << std::endl;
-    std::cout << "NICK NAME: ";
-    std::cout << this->contacts[i].getNickName() << std::endl;
-    std::cout << "PHONE NUMBER: ";
-    std::cout << this->contacts[i].getPhoneNumber() << std::endl;
-    std::cout << "DARKEST SECRET: ";
-    std::cout << this->contacts[i].getSecret() << std::endl;
+{   // que eu nao tenho adicionado ainda.
+    if (this->contacts[i].isEmpty() == 0)
+    {
+        std::cout << "FIRST NAME: ";
+        std::cout << this->contacts[i].getFirstName() << std::endl;
+        std::cout << "LAST NAME: ";
+        std::cout << this->contacts[i].getLastName() << std::endl;
+        std::cout << "NICK NAME: ";
+        std::cout << this->contacts[i].getNickName() << std::endl;
+        std::cout << "PHONE NUMBER: ";
+        std::cout << this->contacts[i].getPhoneNumber() << std::endl;
+        std::cout << "DARKEST SECRET: ";
+        std::cout << this->contacts[i].getSecret() << std::endl;
+    }
+    else
+        std::cout << "Empty contact\n";
+}
 
+int strdigit(std::string str)
+{
+    int i;
+
+    i = 0;
+    while (str[i])
+    {
+        if(!isdigit(str[i]))
+            return (0);
+        i++;
+    }
+    return (1);
 }
 
 void Phonebook::display_contacts(void)
@@ -65,10 +97,10 @@ void Phonebook::display_contacts(void)
     std::cout << "ENTER CONTACT INDEX: ";
     std::getline(std::cin, str);
     std::cout << "\n";
-    if (isdigit(str[0])) // proteger para numeros maiores que 7
+    if (strdigit(str) && stoi(str) <= 8) // proteger no caso de estar vazio
         display_contactsinfo(stoi(str) - 1);
     else
-        std::cout << "Wrong input :\\";
+        std::cout << "Wrong input :\\\n";
 }
 
 void Phonebook::search(int index)

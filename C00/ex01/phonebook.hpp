@@ -8,6 +8,7 @@ class Phonebook
     Phonebook();
     ~Phonebook();
    // Setters
+    int     add_main(int index);
     void    add_contact(int index);
     void    display_start_msg(void);
     void    display_instructions(void);
@@ -15,10 +16,11 @@ class Phonebook
     void    print_line(void);
     void    display_contacts();
     void    display_contactsinfo(int i);
+
     // Getters
     void    print_tableline(int index);
 
-// Constructor and Destructor 
+    // Constructor and Destructor 
     private:
         Contacts contacts[8];
 };
