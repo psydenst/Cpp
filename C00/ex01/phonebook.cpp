@@ -54,7 +54,7 @@ void    Phonebook::display_start_msg(void)
 
 void Phonebook::display_instructions(void)
 {
-    std::string str = "-._.-.-._.-.-._.-.-._.-.-._.-.-._.-.-._.-.-._.-.\n\nADD: Add a new contact in your phonebook\nSEARCH: Shows your contacts\nEXIT: quit phonebook\n\n-._.-.-._.-.-._.-.-._.-.-._.-.-._.-.-._.-.-._.-.\n\n";
+    std::string str = "\033[35m.-._.-.-._.-.-._.-.-._.-.-._.-.-._.-.-._.-.-._.-.\n\nADD: Add a new contact in your phonebook\nSEARCH: Shows your contacts\nEXIT: quit phonebook\n\n-._.-.-._.-.-._.-.-._.-.-._.-.-._.-.-._.-.-._.-.\n\n\033[0m";
     std::cout << str;
 }
 
@@ -94,26 +94,34 @@ int strdigit(std::string str)
 void Phonebook::display_contacts(void)
 {
     std::string str;
-    std::cout << "ENTER CONTACT INDEX: ";
+    std::cout << "\n\nENTER CONTACT INDEX: ";
     std::getline(std::cin, str);
     std::cout << "\n";
     if (strdigit(str) && stoi(str) <= 8) // proteger no caso de estar vazio
         display_contactsinfo(stoi(str) - 1);
     else
-        std::cout << "Wrong input :\\\n";
+        std::cout << "Wrong input :/\n";
 }
 
-void Phonebook::search(int index)
+void Phonebook::search(int contacts)
 {
     int counter = 0;
-    while (counter <= index)
+    while (counter < contacts)
     {
-        if (index > 7)
+        if (counter > 7)
             break;
-        if (this->contacts[counter].isEmpty() == 0)
-            print_tableline(counter);
+        // if (this->contacts[counter].isEmpty() == 0)
+        this->print_tableline(counter);
         counter++;
     }
+}
+
+std::string Phonebook::truncate(std::string otter)
+{
+    if (otter.length() <= 10)
+        return (otter);
+    else
+        return (otter.substr(0,9) + ".");
 }
 
 void Phonebook::print_tableline(int index)
@@ -121,17 +129,18 @@ void Phonebook::print_tableline(int index)
     std::cout << std::right << std::setw(10) << index + 1;
     std::cout << "|";
 	std::cout << std::right << std::setw(10);
-    std::cout << this->contacts[index].getFirstName();
+    std::cout << this->truncate(this->contacts[index].getFirstName());
     std::cout << "|";
 	std::cout << std::right << std::setw(10);
-    std::cout << this->contacts[index].getLastName();
+    std::cout << this->truncate(this->contacts[index].getLastName());
     std::cout << "|";
-	std::cout << std::right << std::setw(10) << this->contacts[index].getNickName();
+	std::cout << std::right << std::setw(10);
+    std::cout <<  this->truncate(this->contacts[index].getNickName());
     std::cout << "|";
 	std::cout << std::endl;
 }
 
 void    Phonebook::print_line(void)
 {
-    std::cout << "\n-._.-.-._.-.-._.-.-._.-.-._.-.-._.-.-._.-.-._.-.\n\n";
+    std::cout << "\033[36m\n-._.-.-._.-.-._.-.-._.-.-._.-.-._.-.-._.-.-._.-.\n\n\033[0m";
 }
