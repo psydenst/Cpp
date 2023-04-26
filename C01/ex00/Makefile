@@ -1,4 +1,4 @@
-NAME = phonebook
+NAME = zombies
 
 SRCS = *.cpp
 
