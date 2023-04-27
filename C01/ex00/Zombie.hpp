@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 21:18:15 by psydenst          #+#    #+#             */
-/*   Updated: 2023/04/26 20:27:31 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/04/27 15:36:58 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ class Zombie
     private:
         std::string name;
 };
-
     Zombie*     newZombie(std::string name);
     void        randomChump( std::string name);
 
