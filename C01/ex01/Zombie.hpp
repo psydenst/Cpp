@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/25 21:18:15 by psydenst          #+#    #+#             */
-/*   Updated: 2023/04/27 16:06:23 by psydenst         ###   ########.fr       */
+/*   Created: 2023/04/27 16:04:43 by psydenst          #+#    #+#             */
+/*   Updated: 2023/04/27 17:52:01 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ class Zombie
 {
     public:
         void        announce(void);
+        Zombie();
+        ~Zombie();
 
     // Setters
         void        setname(std::string name);
@@ -29,7 +31,7 @@ class Zombie
     private:
         std::string name;
 };
-    Zombie*     newZombie(std::string name);
+    Zombie      *zombieHorde (int n, std::string name);
     void        randomChump( std::string name);
 
 #endif

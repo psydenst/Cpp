@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 22:32:00 by psydenst          #+#    #+#             */
-/*   Updated: 2023/04/27 15:42:09 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/04/27 15:59:28 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ int main()
     randomChump("Ringo");
     One = newZombie("George");
     One->announce();
+    delete One;
+    delete Two;
     // One.announce();
 }

@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/25 21:33:51 by psydenst          #+#    #+#             */
-/*   Updated: 2023/04/27 15:53:24 by psydenst         ###   ########.fr       */
+/*   Created: 2023/04/27 17:32:05 by psydenst          #+#    #+#             */
+/*   Updated: 2023/04/27 17:34:57 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
+#include <iostream>
 
-void Zombie::announce(void)
+Zombie* zombieHorde(int n, std::string name)
 {
-    std::cout << this->get_name() << ": BraiiiiiiinnnzzzZ...\n";
-}
-
-void Zombie::setname(std::string name)
-{
-    this->name = name;
-}
-
-std::string Zombie::get_name(void)
-{
-    return(this->name);
+    Zombie *ret;
+    while (n--)
+    {
+        ret = new Zombie();
+        ret->setname(name);
+        ret->announce();
+    }
+    return (ret);
 }
