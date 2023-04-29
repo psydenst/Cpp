@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/25 22:32:00 by psydenst          #+#    #+#             */
-/*   Updated: 2023/04/28 16:27:03 by psydenst         ###   ########.fr       */
+/*   Created: 2023/04/28 18:18:21 by psydenst          #+#    #+#             */
+/*   Updated: 2023/04/28 20:12:17 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
+#include "HumanA.hpp"
 
-int main()
+HumanA::HumanA(std::string name)
 {
-    Zombie *One;
-    Zombie *Two;
+    this->weapon.setType(name);
+}
+
+HumanA::~HumanA()
+{
+    return ;
+}
+void HumanA::attack()
+{
     
-    randomChump("Paul");
-    Two = newZombie("John");
-    Two->announce();
-    randomChump("Ringo");
-    One = newZombie("George");
-    One->announce();
-    delete One;
-    delete Two;
 }

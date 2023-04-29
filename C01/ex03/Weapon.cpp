@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/25 22:32:00 by psydenst          #+#    #+#             */
-/*   Updated: 2023/04/28 16:27:03 by psydenst         ###   ########.fr       */
+/*   Created: 2023/04/28 17:50:37 by psydenst          #+#    #+#             */
+/*   Updated: 2023/04/28 20:13:04 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
 
-int main()
+Weapon::Weapon()
 {
-    Zombie *One;
-    Zombie *Two;
+}
+
+Weapon::~Weapon()
+{
     
-    randomChump("Paul");
-    Two = newZombie("John");
-    Two->announce();
-    randomChump("Ringo");
-    One = newZombie("George");
-    One->announce();
-    delete One;
-    delete Two;
+}
+
+std::string Weapon::getType()
+{
+    return (this->type);
+}
+
+void Weapon::setType(std::string name)
+{
+    this->type = name;
 }
