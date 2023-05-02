@@ -1,10 +1,10 @@
-NAME = brains
+NAME = unes_violence
 
 SRCS = *.cpp
 
 INCLUDE = -I includes
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -g -Wall -Wextra -Werror -std=c++98
 
 CC = c++
 

@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:18:34 by psydenst          #+#    #+#             */
-/*   Updated: 2023/04/28 20:15:30 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/05/02 20:37:50 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,21 @@
 class HumanA
 {
     public:
-    HumanA(std::string name);  
+    HumanA(std::string name, Weapon &weapon);  
     ~HumanA();
-    void    attack();
+// SETTER
+	void	setWeapon(Weapon &weapon);
+	void    setName(std::string name);
+// GETTERS
+	std::string getName();
+	std::string getWeapon(Weapon &weapon);
+// OTHERS
+	void    attack();
 
-    private:
-    Weapon weapon;
-    std::string name;
+    private:    
+	std::string	_name;
+    Weapon		_weapon;
+
 };
 
 #endif
