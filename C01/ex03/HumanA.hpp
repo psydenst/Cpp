@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:18:34 by psydenst          #+#    #+#             */
-/*   Updated: 2023/05/02 20:37:50 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/05/02 21:10:20 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class HumanA
 
     private:    
 	std::string	_name;
-    Weapon		_weapon;
+    Weapon		&_weapon;
 
 };
 
