@@ -6,11 +6,11 @@
 #    By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 17:18:08 by psydenst          #+#    #+#              #
-#    Updated: 2023/05/03 17:53:24 by psydenst         ###   ########.fr        #
+#    Updated: 2023/05/03 21:32:34 by psydenst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = files
+NAME = replace
 
 SRCS = *.cpp
 
