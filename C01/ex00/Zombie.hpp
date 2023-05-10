@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 21:18:15 by psydenst          #+#    #+#             */
-/*   Updated: 2023/04/27 16:06:23 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/05/10 16:58:32 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 class Zombie
 {
     public:
+        Zombie();
+        ~Zombie();
         void        announce(void);
 
     // Setters
