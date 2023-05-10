@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 17:18:17 by psydenst          #+#    #+#             */
-/*   Updated: 2023/05/04 20:42:47 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/05/10 17:51:08 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,12 @@ std::string newString(char *str1, char *str2, std::ifstream *inputFile)
     } 
 	else
 	{
-		while ((found = myString.find(str1)) != std::string::npos)
+		while ((found = myString.find(str1, found)) != std::string::npos)
+        {    
  			myString = replace(str1, myString, str2, found);
-	}
+            found += strlen(str2);
+        }
+    }
 	return (myString);
 }
 
