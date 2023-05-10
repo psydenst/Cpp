@@ -1,0 +1,58 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/05/08 20:24:54 by psydenst          #+#    #+#              #
+#    Updated: 2023/05/08 20:24:56 by psydenst         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = Harl
+
+SRCS = *.cpp
+
+INCLUDE = -I includes
+
+CFLAGS = -g -Wall -Wextra -Werror -std=c++98
+
+CC = c++
+
+RM = rm -rf
+
+all: $(NAME)
+$(NAME): $(SRCS)
+		$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
+
+rainbow :
+	@echo "$(red)R$(grn)A$(yel)I$(blu)N$(pnk)B$(cya)O$(wht)W$(rst)"
+	@echo "$(grn)$(ok) $(rst)"
+	@echo "$(yel)$(ck) $(rst)"
+	@echo "$(red)$(ko) $(rst)"
+.PHONY : rainbow
+
+#.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*. VISUALS .*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.
+ok:=✓
+ko:=✗
+ck:=・
+s:=\033[0
+red:=$s31m
+grn:=$s32m
+yel:=$s33m
+blu:=$s34m
+pnk:=$s35m
+cya:=$s36m
+wht:=$s37m
+rst:=$s00m
+ora:=$s38;2;255;153;0m
+#.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.
+
+re: fclean all
+
+clean:
+	$(RM) *.o
+
+fclean: clean
+	$(RM) $(NAME)
