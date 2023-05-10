@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 19:06:56 by psydenst          #+#    #+#             */
-/*   Updated: 2023/05/02 20:36:34 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/05/10 17:32:51 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,3 @@ int main()
 	return(0) ;
 }
 
-
-
-// int main()
-// {
-
-// 	HumanA A("bob", "club");
-//  //   HumanB B;
-// 	std::cout << A.getname() << std::endl;
-// //	std::cout << A.getWeapon() << std::endl;
-// 	A.attack();
-
-// 	HumanB B("Bernard");
-// 	B.setWeapon("lolo do pai");
-// 	B.attack();
-// }
