@@ -6,11 +6,21 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:14:51 by psydenst          #+#    #+#             */
-/*   Updated: 2023/04/27 18:15:12 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/05/10 17:10:13 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
+
+Zombie::Zombie()
+{  
+    return ;
+}
+
+Zombie::~Zombie()
+{
+    std::cout << this->get_name() << "\033[31m was destroyed\033[0m" << std::endl;
+}
 
 void Zombie::announce(void)
 {
