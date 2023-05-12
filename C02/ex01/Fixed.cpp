@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 19:15:45 by psydenst          #+#    #+#             */
-/*   Updated: 2023/05/11 20:27:26 by psydenst         ###   ########.fr       */
+/*   Created: 2023/05/11 20:26:37 by psydenst          #+#    #+#             */
+/*   Updated: 2023/05/11 21:56:08 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,19 @@ Fixed::Fixed() : _rawBits(0)
 
 Fixed::Fixed(Fixed const &instance)
 {
-    // this->_fraction_bits = 0;
     std::cout << "Copy constructor called" << std::endl;
-    *this = instance; // would this->*instance work?
+    *this = instance;
+    return ;    
+}
+
+Fixed::Fixed(float const value)
+{
+    std::cout << "Float constructor called" << std::endl;
+}
+
+Fixed::Fixed(int const value)
+{
+    std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::~Fixed()
@@ -29,20 +39,15 @@ Fixed::~Fixed()
     std::cout << "Destructor called" << std::endl;
 }
 
+int Fixed::toInt(void) const
+{
+    
+}
+float Fixed::toFloat(void) const
+
+
 int Fixed::getRawBits(void) const
 {
     std::cout << "getRawBits member function called" << std::endl;
     return (this->_rawBits);
-}
-
-void    Fixed::setRawBits(int _rawBits)
-{
-    this->_rawBits = _rawBits / _fraction_bits;
-}
-
-Fixed &Fixed::operator =(Fixed const &rigth_hand_side)
-{
-    std::cout << "Assignation operator called" << std::endl;
-    this->_rawBits = rigth_hand_side.getRawBits();
-    return (*this);
 }
