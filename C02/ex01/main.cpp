@@ -6,11 +6,11 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 20:26:32 by psydenst          #+#    #+#             */
-/*   Updated: 2023/05/11 20:48:41 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/05/12 20:40:54 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "Fixed.hpp"
 
 int main( void ) 
 {
@@ -30,3 +30,4 @@ int main( void )
     std::cout << "d is " << d.toInt() << " as integer" << std::endl;
     return 0; 
 }
+

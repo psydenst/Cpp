@@ -6,11 +6,11 @@
 #    By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 20:24:07 by psydenst          #+#    #+#              #
-#    Updated: 2023/05/11 20:24:09 by psydenst         ###   ########.fr        #
+#    Updated: 2023/05/12 20:40:26 by psydenst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = overload_101
+NAME = fixed_point
 
 SRCS = *.cpp
 
