@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 21:53:04 by psydenst          #+#    #+#             */
-/*   Updated: 2023/05/15 22:20:57 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:07:49 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,24 @@ bool	Fixed::operator != (Fixed const &right_hand_side) const
 	return (this->_rawBits != right_hand_side.getRawBits());
 }
 
+// MIN AND MAX
+
+Fixed	const &Fixed::min(Fixed const &value1, Fixed const &value2)
+{
+	if (value1 > value2)
+		return (value2);
+	else
+		return (value1);
+}
+
+Fixed	const &Fixed::max(Fixed const &value1, Fixed const &value2)
+{
+	if (value1 > value2)
+		return (value1);
+	else
+		return (value2);
+}
+
 // ARITHMETIC FUNCTIONS
 
 Fixed Fixed::operator*(Fixed const &rigth_hand_side)
@@ -159,14 +177,14 @@ Fixed   &Fixed::operator--(void)
 Fixed   Fixed::operator++(int)
 {
 	Fixed ret(*this);
-	ret._rawBits++;
+	this->_rawBits++;
 	return (ret);
 }
 
 Fixed   Fixed::operator--(int)
 {
 	Fixed ret(*this);
-	ret._rawBits--;
+	this->_rawBits--;
 	return (ret);
 }
 

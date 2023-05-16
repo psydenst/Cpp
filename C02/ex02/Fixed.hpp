@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 21:02:52 by psydenst          #+#    #+#             */
-/*   Updated: 2023/05/15 21:46:49 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:06:07 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,12 @@ class Fixed
 	// post-increment/decrement
 	Fixed	operator++(int);
 	Fixed	operator--(int);
+
+
+	//MIN AND MAX
+	static	Fixed const &min(Fixed const &value1, Fixed const &value2);
+	static	Fixed const &max(Fixed const &value1, Fixed const &value2);
+
 
 	// SETTERS
 	void    setInt(int const value);

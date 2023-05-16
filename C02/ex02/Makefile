@@ -6,7 +6,7 @@
 #    By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/15 17:30:18 by psydenst          #+#    #+#              #
-#    Updated: 2023/05/15 17:30:20 by psydenst         ###   ########.fr        #
+#    Updated: 2023/05/16 15:44:34 by psydenst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS = *.cpp
 
 INCLUDE = -I includes
 
-CFLAGS = -Wall -Wextra -Werror -g -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 CC = c++
 
