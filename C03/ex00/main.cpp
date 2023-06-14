@@ -14,8 +14,8 @@
 
 int main()
 {
-	ClapTrap one;
-	ClapTrap two;
+	ClapTrap one("Fred");
+	ClapTrap two("GabiGol");
 
-	
+	one.attack("GabiGol");
 }

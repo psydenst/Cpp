@@ -23,7 +23,7 @@ class ClapTrap
 		int	energy_points;
 		int	attack_damage; // initialize them in hpp
 	public:
-		ClapTrap();
+		ClapTrap(std::string name);
 		ClapTrap(ClapTrap const &instance);
 		~ClapTrap();
 		ClapTrap &operator=(ClapTrap const &right_hand_side);

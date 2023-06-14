@@ -50,14 +50,28 @@ void	ClapTrap::setName(std::string name)
 	this->name = name;
 }
 
-void	attack(const std::string& target)
+void	ClapTrap::attack(const std::string& target)
 {
 	this->energy_points -= 1;
-	std::cout << "ClapTrap " << getName() << " attacks" << target << ", causing" << getDamage() << " points of damage!" << std::endl;
+	std::cout << "ClapTrap " << getName() << " attacks " << target << ", causing " << getDamage() << " points of damage!" << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	this->hit_points = hit_points - amount;
+	if (this->hit_points > 0)
+		this->hit_points = hit_points - amount;
+	else
+		std::cout << getName() << " is dead" << std::endl;
 }
+ClapTrap& ClapTrap::operator=(const ClapTrap& right_hand_side)
+{
+  if (this != &right_hand_side)
+  {
+    this->name = right_hand_side.name;
+    this->hit_points = right_hand_side.energy_points;
+    this->attack_damage = right_hand_side.attack_damage;
+  }
+  return (*this);
+}
+
 
