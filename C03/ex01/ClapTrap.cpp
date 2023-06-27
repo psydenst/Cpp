@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 21:11:24 by psydenst          #+#    #+#             */
-/*   Updated: 2023/05/23 23:04:18 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:43:38 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // CONSTRUCTORS AND DESTRUCTORS
 ClapTrap::ClapTrap(std::string name)
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "Default Clap constructor called" << std::endl;
 	this->name = name;
 	this->hit_points= 10;
 	this->energy_points = 10;
@@ -24,7 +24,7 @@ ClapTrap::ClapTrap(std::string name)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "Clap Destructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &instance)
@@ -59,9 +59,12 @@ void	ClapTrap::attack(const std::string& target)
 void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->hit_points > 0)
+	{
 		this->hit_points = hit_points - amount;
+		std::cout << "\033[36m"<< getName() << " took " << getDamage() << " points of damage\033[0m" << std::endl;
+	}
 	else
-		std::cout << getName() << " is dead" << std::endl;
+		std::cout << "\033[36m" << getName() << " is dead\033[0m" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& right_hand_side)

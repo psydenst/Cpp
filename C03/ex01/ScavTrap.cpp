@@ -6,7 +6,7 @@
 
 ScavTrap:: ScavTrap(std::string name) : ClapTrap(name)
 {
-	std::cout << "Defautl constructor Called" << std::endl;
+	std::cout << "Default Scav constructor Called" << std::endl;
 	this->hit_points = 100;
 	this->energy_points = 50;
 	this->attack_damage = 20;
@@ -14,7 +14,7 @@ ScavTrap:: ScavTrap(std::string name) : ClapTrap(name)
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "Scav Destructor called" << std::endl;
 }
 
 ScavTrap::ScavTrap(ScavTrap const &instance) : ClapTrap(instance) 
@@ -49,8 +49,13 @@ int ScavTrap::getDamage(void)
 void ScavTrap::attack(std::string const &target)
 {
 	this->energy_points -= 1;
-	std::cout << "ClapTrap " << getName() << " attacks "
-		<< target << ", causing " << getDamage() << " points of damage!"
+	std::cout << "\033[35mScavTrap " << getName() << " attacks "
+		<< target << ", causing " << getDamage() << " points of damage!\033[0m"
 		<< std::endl;
+}
+
+void	ScavTrap::guardGate()
+{
+	std::cout << "Scavtrap " << getName() << " is in Gate keeper mode" << std::endl;
 }
 

@@ -12,4 +12,5 @@ int main()
 		one.attack("two");
 		two.takeDamage(two.getDamage());
 	}
+	one.guardGate();
 }
