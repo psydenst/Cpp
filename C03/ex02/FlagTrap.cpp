@@ -6,33 +6,34 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 18:01:00 by psydenst          #+#    #+#             */
-/*   Updated: 2023/06/27 18:04:12 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/06/28 14:32:49 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FlagTrap.hpp"
 
-ScavTrap:: ScavTrap(std::string name) : ClapTrap(name)
+FlagTrap:: FlagTrap(std::string name) : ClapTrap(name)
 {
-        std::cout << "Default Scav constructor Called" << std::endl;
+        std::cout << "Default Flag constructor Called" << std::endl;
         this->hit_points = 100;
-        this->energy_points = 50;
-        this->attack_damage = 20;
+        this->energy_points = 100;
+        this->attack_damage = 30;
+
 }
 
-ScavTrap::~ScavTrap()
+FlagTrap::~FlagTrap()
 {
-        std::cout << "Scav Destructor called" << std::endl;
+        std::cout << "Flag Destructor called" << std::endl;
 }
 
-ScavTrap::ScavTrap(ScavTrap const &instance) : ClapTrap(instance) 
+FlagTrap::FlagTrap(FlagTrap const &instance) : ClapTrap(instance) 
 {
         std::cout << "Copy constructor called" << std::endl;
         *this = instance;
         return ;
 }
 
-ScavTrap& ScavTrap::operator=(const ScavTrap& right_hand_side)
+FlagTrap& FlagTrap::operator=(const FlagTrap& right_hand_side)
 {
         if (this != &right_hand_side)
         {
@@ -44,31 +45,26 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& right_hand_side)
         return (*this);
 }
 
-std::string ScavTrap::getName(void)
+std::string FlagTrap::getName(void)
 {
         return (this->name);
 }
 
-int ScavTrap::getDamage(void)
+int FlagTrap::getDamage(void)
 {
         return (this->attack_damage);
 }
 
 
-int ScavTrap::getDamage(void)
-{
-        return (this->attack_damage);
-}
-
-void ScavTrap::attack(std::string const &target)
+void FlagTrap::attack(std::string const &target)
 {
         this->energy_points -= 1;
-        std::cout << "\033[35mScavTrap " << getName() << " attacks "
+        std::cout << "\033[35mFlagTrap " << getName() << " attacks "
                 << target << ", causing " << getDamage() << " points of damage!\033[0m"
                 << std::endl;
 }
 
-void    ScavTrap::guardGate()
+void    FlagTrap::highFivesGuys()
 {
-        std::cout << "Scavtrap " << getName() << " is in Gate keeper mode" << std::endl;
+        std::cout << "\033[33mFlagtrap " << getName() << " is in high Five mode :), requesting your response\033[0m" << std::endl;
 }

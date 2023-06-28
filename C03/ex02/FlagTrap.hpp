@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 17:50:35 by psydenst          #+#    #+#             */
-/*   Updated: 2023/06/27 17:59:34 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/06/28 14:27:40 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ class FlagTrap : public ClapTrap
         public:
                 FlagTrap(void);
                 FlagTrap(std::string name);
-                FlagTrap(ScavTrap const &instance);
+                FlagTrap(FlagTrap const &instance);
                 ~FlagTrap(void);
-                FlagTrap        &operator=(ScavTrap const &rigth_hand_side);
-                std::string     getName();
+                FlagTrap        &operator=(FlagTrap const &rigth_hand_side);
+                std::string		getName();
                 int                     getDamage();
                 void            attack(std::string const &target);
                 void            highFivesGuys(void);

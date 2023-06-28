@@ -1,5 +1,15 @@
-// INCLUDE 42 HEADER
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/28 14:33:55 by psydenst          #+#    #+#             */
+/*   Updated: 2023/06/28 14:49:13 by psydenst         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ScavTrap.hpp"
 #include "ClapTrap.hpp"
 #include <ostream>
@@ -56,6 +66,13 @@ void ScavTrap::attack(std::string const &target)
 
 void	ScavTrap::guardGate()
 {
-	std::cout << "Scavtrap " << getName() << " is in Gate keeper mode" << std::endl;
+	if (this->hit_points > 0)
+	{
+		std::cout << "\033[33mScavtrap " << getName() << " is in Gate keeper mode\033[0m" << std::endl;
+	}
+	else
+        {
+		std::cout << "\033[31mScavTrap " << getName() << " is dead" << std::endl;
+        }
 }
 
