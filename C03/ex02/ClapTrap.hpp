@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 21:42:31 by psydenst          #+#    #+#             */
-/*   Updated: 2023/05/23 23:06:39 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/06/28 17:10:50 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 
 class ClapTrap
 {
-	private:
-
 	protected:
 		std::string name;
 		int hit_points;

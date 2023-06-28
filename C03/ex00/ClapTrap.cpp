@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 21:11:24 by psydenst          #+#    #+#             */
-/*   Updated: 2023/05/23 23:04:18 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/06/28 17:06:08 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ ClapTrap::ClapTrap(std::string name)
 {
 	std::cout << "Default constructor called" << std::endl;
 	this->name = name;
-	this->hit_points= 10;
+	this->hit_points = 10;
 	this->energy_points = 10;
 	this->attack_damage = 0;
 }
@@ -53,7 +53,7 @@ void	ClapTrap::setName(std::string name)
 void	ClapTrap::attack(const std::string& target)
 {
 	this->energy_points -= 1;
-	std::cout << "ClapTrap " << getName() << " attacks " << target << ", causing " << getDamage() << " points of damage!" << std::endl;
+	std::cout << "\033[31mClapTrap " << getName() << " attacks " << target << ", causing " << getDamage() << " points of damage!\033[0m" << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
@@ -74,4 +74,14 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& right_hand_side)
   return (*this);
 }
 
-
+void ClapTrap::beRepaired(unsigned int amount)
+{
+	this->energy_points-= 1;
+	if (this->energy_points > 0)
+	{
+		this->hit_points += amount;
+		std::cout << "\033[33m"<< getName() << " repaired itself with " << amount << " point(s)\033[0m" << std::endl;
+	}
+	else
+		std::cout << "\033[31m" << getName() << "has no energy points\033[0m" << std::endl;
+}
