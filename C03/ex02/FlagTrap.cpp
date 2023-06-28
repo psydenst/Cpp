@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 18:01:00 by psydenst          #+#    #+#             */
-/*   Updated: 2023/06/28 14:32:49 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/06/28 14:46:47 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int FlagTrap::getDamage(void)
         return (this->attack_damage);
 }
 
-
 void FlagTrap::attack(std::string const &target)
 {
         this->energy_points -= 1;
@@ -66,5 +65,12 @@ void FlagTrap::attack(std::string const &target)
 
 void    FlagTrap::highFivesGuys()
 {
-        std::cout << "\033[33mFlagtrap " << getName() << " is in high Five mode :), requesting your response\033[0m" << std::endl;
+	if (hit_points > 0)
+	{
+		std::cout << "\033[33mFlagtrap " << getName() << " is in high Five mode :), requesting your response\033[0m" << std::endl;
+	}
+	else
+	{
+		std::cout << "\033[31mFlagTrap " << getName() << " is dead" << std::endl;
+	}
 }

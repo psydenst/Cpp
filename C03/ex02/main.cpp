@@ -7,6 +7,12 @@ int main()
 
 	one.attack("two");
 	two.takeDamage(two.getDamage());
-
+	int i = 10;
+	while (--i > 0)
+	{
+		one.attack("two");
+		two.takeDamage(two.getDamage());
+	}
 	two.highFivesGuys();
+	one.highFivesGuys();
 }
