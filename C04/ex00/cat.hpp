@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   animal.hpp                                         :+:      :+:    :+:   */
+/*   cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 16:21:23 by psydenst          #+#    #+#             */
-/*   Updated: 2023/07/11 16:54:28 by psydenst         ###   ########.fr       */
+/*   Created: 2023/07/11 16:21:00 by psydenst          #+#    #+#             */
+/*   Updated: 2023/07/11 16:21:11 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 
 #include <iostream>
 
-class Animal
+class Cat
 {
 		protected:
 			std::string type;
-	
+		
 		public:
-			Animal(std::string name);
-			Animal();
-			~Animal();
-			Animal	(Animal const &instance);
-			Animal &operator=(Animal const &instance);
+			Cat();
+			~Cat();
+			Cat	(Cat const &instance);
+			Cat &operator=(Cat const &instance)
 			virtual void makeSound() const;
-			std::string getType()const;
 };
 
 #endif
