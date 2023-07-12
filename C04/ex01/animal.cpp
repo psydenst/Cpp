@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:39:18 by psydenst          #+#    #+#             */
-/*   Updated: 2023/07/11 16:50:31 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/07/11 22:36:17 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ Animal::Animal(std::string name)
 
 Animal::Animal()
 {
+	this->brainPtr = NULL;
 	std::cout << "Animal default constructor called" << std::endl;
 }
 
@@ -31,6 +32,7 @@ Animal::~Animal()
 
 Animal::Animal(Animal const &instance)
 {
+	this->brainPtr = NULL;
 	*this = instance;
 	std::cout << "Animal copy constructor called" << std::endl;
 	return ;
@@ -50,4 +52,9 @@ Animal &Animal::operator=(Animal const &right_hand_side)
 {
 	this->type = right_hand_side.getType();
 	return *this;
+}
+
+void	Animal::printIdea()
+{
+	return ;
 }

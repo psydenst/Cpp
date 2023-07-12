@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:21:00 by psydenst          #+#    #+#             */
-/*   Updated: 2023/07/11 17:52:14 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/07/11 22:24:08 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 
 #include <iostream>
 #include "animal.hpp"
+#include "brain.hpp"
 
 class Cat : public Animal
 {
 		protected:
 			std::string type;
-	
+			Brain *brainPtr;
 		public:
 			Cat(std::string name);
 			Cat();
@@ -29,6 +30,7 @@ class Cat : public Animal
 			Cat &operator=(Cat const &instance);
 			virtual void makeSound() const;
 			std::string getType()const;
+			virtual void printIdea();
 };
 
 #endif

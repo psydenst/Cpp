@@ -6,11 +6,12 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 17:26:01 by psydenst          #+#    #+#             */
-/*   Updated: 2023/07/11 17:28:47 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/07/11 23:00:28 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cat.hpp"
+#include "brain.hpp"
 
 Cat::Cat(std::string name)
 {
@@ -22,11 +23,13 @@ Cat::Cat(std::string name)
 Cat::Cat()
 {
 	std::cout << "Cat default constructor called" << std::endl;
+	this->brainPtr = new Brain();
 }
 
 Cat::~Cat()
 {
 	std::cout << "Cat default destructor called" << std::endl;
+	delete(this->brainPtr);
 }
 
 Cat::Cat(Cat const &instance)
@@ -48,6 +51,14 @@ std::string Cat::getType() const
 
 Cat &Cat::operator=(Cat const &right_hand_side)
 {
+	this->brainPtr = new Brain;
+	this->brainPtr = right_hand_side.brainPtr;
 	this->type = right_hand_side.getType();
 	return *this;
 }
+
+void Cat::printIdea()
+{
+        std::cout << "\033[31m "<< this->brainPtr->ideas[10] << "\033[0m" << std::endl;
+}
+

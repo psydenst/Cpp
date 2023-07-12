@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 17:27:40 by psydenst          #+#    #+#             */
-/*   Updated: 2023/07/11 17:58:41 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/07/11 22:37:23 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,31 @@
 
 int main()
 {
-const Animal* meta = new Animal();
-const Animal* j = new Dog();
-const Animal* i = new Cat();
-std::cout << j->getType() << " " << std::endl;
-std::cout << i->getType() << " " << std::endl;
-i->makeSound(); //will output the cat sound!
-j->makeSound();
-meta->makeSound();
 
-return 0;
+	Animal *Jungle[8];
+	int i = 0;
+	while (i < 8)
+	{
+		if (i < 4)
+			Jungle[i] = new Dog;
+		else
+			Jungle[i] = new Cat;
+		i++;
+	}
+	i = 0;
+	while (i < 8)
+	{
+		Jungle[i]->makeSound();
+		Jungle[i]->printIdea();
+		delete Jungle[i];
+		i++;
+	}
+
+	Dog *Dog1 = new Dog; 
+	Dog *Dog2 = Dog1;
+	delete (Dog1);
+	Dog2->printIdea();
+	return (0);
 }
 
-/*
-int main()
-{
-	WrongCat Wrong;
-	Dog Canguru("Canguru");
-	Canguru.makeSound();
-	Wrong.makeSound();
 
-} */

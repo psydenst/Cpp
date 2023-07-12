@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:21:46 by psydenst          #+#    #+#             */
-/*   Updated: 2023/07/11 17:52:27 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/07/11 22:23:16 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 
 #include <iostream>
 #include "animal.hpp"
+#include "brain.hpp"
 
 class Dog : public Animal
 {
 		protected:
+			Brain *brainPtr;
 			std::string type;
 	
 		public:
@@ -29,6 +31,7 @@ class Dog : public Animal
 			Dog &operator=(Dog const &instance);
 			virtual void makeSound() const;
 			std::string getType()const;
+			virtual void printIdea();
 };
 
 #endif
