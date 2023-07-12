@@ -34,15 +34,14 @@ int main()
 	while (i < 8)
 	{
 		Jungle[i]->makeSound();
-		Jungle[i]->printIdea();
 		delete Jungle[i];
 		i++;
 	}
 
 	Dog *Dog1 = new Dog; 
-	Dog *Dog2 = Dog1;
+	Dog Dog2 = *Dog1;
 	delete (Dog1);
-	Dog2->printIdea();
+	Dog2.printIdea();
 	return (0);
 }
 

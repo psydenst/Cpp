@@ -21,7 +21,6 @@ Animal::Animal(std::string name)
 
 Animal::Animal()
 {
-	this->brainPtr = NULL;
 	std::cout << "Animal default constructor called" << std::endl;
 }
 
@@ -32,7 +31,6 @@ Animal::~Animal()
 
 Animal::Animal(Animal const &instance)
 {
-	this->brainPtr = NULL;
 	*this = instance;
 	std::cout << "Animal copy constructor called" << std::endl;
 	return ;

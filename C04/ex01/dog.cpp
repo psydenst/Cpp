@@ -51,10 +51,12 @@ std::string Dog::getType() const
 
 Dog &Dog::operator=(Dog const &right_hand_side)
 {
-	this->brainPtr = new Brain;
-	this->brainPtr = right_hand_side.brainPtr;
-	this->type = right_hand_side.getType();
-	return *this;
+    if (this != &right_hand_side)
+    {
+        delete this->brainPtr;
+        this->brainPtr = new Brain(*right_hand_side.brainPtr);
+    }
+    return *this;
 }
 
 void Dog::printIdea()

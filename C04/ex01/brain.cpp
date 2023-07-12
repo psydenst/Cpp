@@ -121,7 +121,7 @@ Brain::Brain()
 {
 	int i;
 
-	std::srand((unsigned int)time(NULL));
+	std::srand(static_cast<unsigned int>(std::time(NULL)));
 	i = 0;
 	while(i < 100)
 	{
@@ -138,7 +138,7 @@ Brain::Brain(Brain const &instance)
 	return ;
 }
 
-Brain &Brain::operator=(Brain const &right_hand_side)
+void Brain::operator=(Brain const &right_hand_side)
 {
 	int i;
 
@@ -148,7 +148,6 @@ Brain &Brain::operator=(Brain const &right_hand_side)
 		this->ideas[i] = right_hand_side.ideas[i];
 		i++;
 	}
-	return (*this);
 }
 
 Brain::~Brain()

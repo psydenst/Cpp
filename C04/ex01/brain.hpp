@@ -24,7 +24,7 @@ class Brain
 		std::string ideas[100];
 		Brain();
 		Brain(Brain const &instance);	
-		Brain &operator=(Brain const &instance);
+		void operator=(Brain const &instance);
 		~Brain();
 };
 

@@ -28,6 +28,7 @@ Cat::Cat()
 
 Cat::~Cat()
 {
+	this->printIdea();
 	std::cout << "Cat default destructor called" << std::endl;
 	delete(this->brainPtr);
 }
@@ -51,8 +52,7 @@ std::string Cat::getType() const
 
 Cat &Cat::operator=(Cat const &right_hand_side)
 {
-	this->brainPtr = new Brain;
-	this->brainPtr = right_hand_side.brainPtr;
+	this->brainPtr = new Brain(*right_hand_side.brainPtr);
 	this->type = right_hand_side.getType();
 	return *this;
 }
