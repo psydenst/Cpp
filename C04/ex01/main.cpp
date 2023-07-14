@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 17:27:40 by psydenst          #+#    #+#             */
-/*   Updated: 2023/07/11 22:37:23 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/07/14 20:15:44 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@
 int main()
 {
 
-	Animal *Jungle[8];
+	Animal *Jungle[100];
 	int i = 0;
-	while (i < 8)
+	while (i < 100)
 	{
-		if (i < 4)
-			Jungle[i] = new Dog;
-		else
+		if (i < 60)
 			Jungle[i] = new Cat;
+		else
+			Jungle[i] = new Dog;
 		i++;
 	}
 	i = 0;
-	while (i < 8)
+	while (i < 100)
 	{
 		Jungle[i]->makeSound();
 		delete Jungle[i];

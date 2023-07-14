@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 17:31:37 by psydenst          #+#    #+#             */
-/*   Updated: 2023/07/11 23:01:53 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/07/14 20:14:13 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,15 @@ Dog::Dog()
 
 Dog::~Dog()
 {
+	this->printIdea();
 	std::cout << "Dog default destructor called" << std::endl;
 	delete(this->brainPtr);
 }
 
-Dog::Dog(Dog const &instance)
+Dog::Dog(Dog const &instance) : Animal(instance)
 {
 	std::cout << "Dog copy constructor called" << std::endl;
-	*this = instance;
+	this->brainPtr = new Brain(*instance.brainPtr);
 	return ;
 }
 
@@ -53,7 +54,6 @@ Dog &Dog::operator=(Dog const &right_hand_side)
 {
     if (this != &right_hand_side)
     {
-        delete this->brainPtr;
         this->brainPtr = new Brain(*right_hand_side.brainPtr);
     }
     return *this;

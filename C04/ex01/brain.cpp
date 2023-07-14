@@ -6,13 +6,13 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 19:03:11 by psydenst          #+#    #+#             */
-/*   Updated: 2023/07/11 22:47:46 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/07/14 20:02:13 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "brain.hpp"
 #include <stdlib.h>
-
+#include <unistd.h>
 std::string Brain::_rawIdeas[100] = {
 
 "A dog is the only thing on earth that loves you more than you love yourself.",
@@ -120,19 +120,19 @@ std::string Brain::_rawIdeas[100] = {
 Brain::Brain()
 {
 	int i;
-
-	std::srand(static_cast<unsigned int>(std::time(NULL)));
+	
 	i = 0;
 	while(i < 100)
 	{
-		this->ideas[i] = Brain::_rawIdeas[rand() % 100]; 
+		this->ideas[i] = Brain::_rawIdeas[(rand() % 55) + (rand() % 44)]; 
 		i++;
 	}
+	usleep(100);
 	std::cout << "Brain borned" << std::endl;
 }
 
 Brain::Brain(Brain const &instance)
-{	
+{
 	*this = instance;
 	std::cout << "Brain copy constructor called" << std::endl;
 	return ;
