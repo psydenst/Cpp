@@ -19,41 +19,57 @@ Bureaucrat::Bureaucrat(Bureaucrat const &instance)
     std::cout << "Copy Bureaucrat constructor called" << std::endl;
 }
 
-Bureaucrat operator = 
-
-void    Bureaucrat::checkGrade(void)
-{
-    if (this->grade < 1)
-        throw Bureaucrat::GradeTooHighException();
-    if (this->grade > 150)
-        throw Bureaucrat::GradeTooLowException();
-}
-
 void Bureaucrat::incrementGrade()
 {
     this->grade++;
     try
     {
-        checkGrade();
+        if (this->grade < 1)
+			throw Bureaucrat::GradeTooLowException();
+		if (this->grade > 150)
+			throw Bureaucrat::GradeTooHighException();
     }
-    catch(const std::exception& e)
+ 	catch(GradeTooHighException e)
     {
-        this->grade++;
-        std::cerr << e.what() << '\n';
+		std::cerr << e.what() << '\n';
     }
 }
 
 void Bureaucrat::decrementGrade()
 {
     this->grade--;
-    if (this->grade < 1)
+    try
     {
-        checkGrade();
+        if (this->grade < 1)
+			throw Bureaucrat::GradeTooLowException();
+		if (this->grade > 150)
+			throw Bureaucrat::GradeTooHighException();
     }
-    catch(const std::exception & e)
+    catch(GradeTooLowException e)
     {
-        this->_grade--;
-        std::cerr << e.what() << '\n';
-    }
+    	std::cerr << e.what() << '\n';
+	}
+}
+
+int	Bureaucrat::getGrade() const
+{
+	return (this->grade);
+}
+
+std::string Bureaucrat::getName() const
+{
+	return (this->name);
+}
+
+Bureaucrat	&Bureaucrat::operator=(Bureaucrat const &right_hand_side)
+{
+	this->grade = right_hand_side.getGrade();
+	return (*this);
+}
+
+std::ostream &operator<<(std::ostream &outputFile, Bureaucrat const &i)
+{
+	outputFile << i.getName() << ", bureaucrat grade " << i.getGrade() << std::endl;
+	return (outputFile);
 }
 
