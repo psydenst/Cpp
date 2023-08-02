@@ -2,7 +2,8 @@
 # define FORM_HPP
 
 #include <iostream>
-#include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {
@@ -32,7 +33,7 @@ class Form
 	public:
 
 	Form();
-	Form(int toSign, int toExecute);
+	Form(int toSign, int toExecute, std::string name);
 	Form(Form const &instance);
 	~Form();
 	// GETTERS

@@ -1,12 +1,21 @@
-// INCLUDE 42 HEADER
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/02 17:22:10 by psydenst          #+#    #+#             */
+/*   Updated: 2023/08/02 17:32:41 by psydenst         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-Bureaucrat::Bureaucrat(int grade)
+Bureaucrat::Bureaucrat(int grade, std::string const name): name(name), grade(grade)
 {
-    std::cout << "Bureaucrat created" << std::endl;
-    this->grade = grade;
+	std::cout << "Bureaucrat created" << std::endl;
 }
 
 Bureaucrat::~Bureaucrat()
@@ -74,21 +83,22 @@ std::ostream &operator<<(std::ostream &outputFile, Bureaucrat const &i)
 	return (outputFile);
 }
 
-void    Bureaucrat::signForm(Form form const)
+void    Bureaucrat::signForm(Form form) const
 {
-    if (form.gradeToSign == -50)
-    {
-        try
-        {
-            form.beSigned(*this);
-        }
-        catch (GradeTooLowException e)
-        {
-                std::cerr << this->getName << "couldn't sign "
+	if (form.getGradeToSign() == -50)
+	{
+		try
+	        {
+	            form.beSigned(*this);
+	        }
+	        catch (GradeTooLowException e)
+	        {
+                std::cerr << this->getName() << "couldn't sign "
                 << form.getName() << " because" << e.what()
                 << std::endl;
-        }
-    }
-	std:: cout << this->getName << " couldn't sign " << form.getName
-	<< " because " << e.what() << std::endl;
+			return ;
+		}
+	}
+	std::cout << this->getName() << " signs " << form.getName() << std::endl;
+	return ;
 }

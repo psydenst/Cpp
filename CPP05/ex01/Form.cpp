@@ -1,4 +1,14 @@
-// INCLUDE 42 HEADER
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Form.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/02 16:26:49 by psydenst          #+#    #+#             */
+/*   Updated: 2023/08/02 17:33:26 by psydenst         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
@@ -10,7 +20,7 @@ Form::Form()
 	this->gradeToExecute = -50;
 }
 
-Form::Form(int toSign, int toExecute)
+Form::Form(int toSign, int toExecute, std::string name) : name(name)
 {
 	std::cout << "Default constructor called, with gradeToSign " << toSign
 	<< " and gradeToExecute" << toExecute << std::endl;
