@@ -2,7 +2,7 @@
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(int grade)
+Bureaucrat::Bureaucrat(int grade, std::string name) : name(name)
 {
     std::cout << "Bureaucrat created" << std::endl;
     this->grade = grade;

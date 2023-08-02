@@ -28,8 +28,8 @@ class GradeTooLowException : public std::exception {
 
     public:
         Bureaucrat();
-		Bureaucrat(int grade);
-		Bureaucrat(Bureaucrat const &instance);
+	Bureaucrat(int grade, std::string name);
+	Bureaucrat(Bureaucrat const &instance);
         ~Bureaucrat();
 		Bureaucrat &operator=(Bureaucrat const &right_hand_side); 
         int     		getGrade() const;
