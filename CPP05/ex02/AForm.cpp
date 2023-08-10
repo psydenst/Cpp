@@ -5,7 +5,7 @@
 
 Form::Form()
 {
-	std::cout << "Default constructor called, with default gradeToSign -50 and gradeToExecute -50" << std::endl;
+	std::cout << "Form default constructor called, with default gradeToSign -50 and gradeToExecute -50" << std::endl;
 	this->gradeToSign = -50;
 	this->gradeToExecute = -50;
 }
@@ -21,19 +21,36 @@ Form::Form(std::string name, int toSign, int toExecute)
 
 bool		Form::execute(Bureaucrat const &executor) const
 {
-	if (!this->isSigned)
-	{
-		throw Form::NoSignatureException();
-		return false;
-	}
-	if (executor.getGrade() > this->getGradeToExecute())
-	{
-		throw Form::GradeTooLowException();
-		return false;
-	}
-	return true;
-}
+    try {
+        if (!this->isSigned)
+        {
+            throw Form::NoSignatureException();
+        }
 
+        if (executor.getGrade() > this->getGradeToExecute())
+        {
+            throw Form::GradeTooLowException();
+        }
+
+        // If the form is signed and the executor's grade is acceptable, execute the form
+        return true;
+	} 
+	catch (const Form::NoSignatureException &e) 
+	{
+        std::cerr << "Exception: " << e.what() << std::endl;
+        return false;
+    } 
+	catch (const Form::GradeTooLowException &e)
+	{
+        std::cerr << "Exception: " << e.what() << std::endl;
+        return false;
+    }
+	catch (const std::exception &e)
+	{
+        std::cerr << "Exception: " << e.what() << std::endl;
+        return false;
+    }
+}
 
 Form::Form(Form const &instance)
 {
@@ -69,7 +86,7 @@ int	Form::getIsSigned() const
 std::ostream &operator <<(std::ostream &outputFile, Form const &i)
 {
 	outputFile << i.getName() << "gradetoSign is " << i.getGradeToSign() <<
-	" and gradeToExecute is" << i.getGradeToExecute() << ". Is signed: ";
+	" and gradeToExecute is " << i.getGradeToExecute() << ". Is signed: ";
 	if (i.getIsSigned())
 			outputFile << "Yes" << std::endl;
 	else
@@ -78,7 +95,7 @@ std::ostream &operator <<(std::ostream &outputFile, Form const &i)
 }
 
 
-void Form::beSigned(Bureaucrat const b)
+void Form::beSigned(Bureaucrat const &b)
 {
 	if (b.getGrade() > this->getGradeToSign())
 			throw Form::GradeTooLowException();
@@ -95,4 +112,9 @@ void	Form::setTarget(std::string target)
 std::string Form::getTarget() const
 {
 	return (this->target);
+}
+
+void	Form::setSign(bool i)
+{
+	this->isSigned = i;
 }

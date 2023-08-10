@@ -1,4 +1,7 @@
+// INCLUDE 42 HEADER
+
 #include "PresidentialPardonForm.hpp"
+#include "Bureaucrat.hpp"
 #include <iostream>
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target) : Form("PresidentialPardonForm", 25, 5)
@@ -16,6 +19,11 @@ bool    PresidentialPardonForm::execute(Bureaucrat const &executor) const
         return (true);
     }
     return (true);
+}
+
+PresidentialPardonForm::~PresidentialPardonForm()
+{
+    std::cout << "Presidential Pardon Form destructor called" << std::endl;
 }
 
 std::ostream &operator<<(std::ostream &outputFile, PresidentialPardonForm const &i)
@@ -40,11 +48,18 @@ std::ostream &operator<<(std::ostream &outputFile, PresidentialPardonForm const 
     return (outputFile);
 }
 
-void PresidentialPardonForm::beSigned(Bureaucrat const b)
+void PresidentialPardonForm::setSign(bool i)
+{
+    this->isSigned = i;
+}
+
+
+void PresidentialPardonForm::beSigned(Bureaucrat const &b)
 {
 	if (b.getGrade() > this->getGradeToSign())
 			throw Form::GradeTooLowException();
 	else
-			this->isSigned = true; 
+			this->setSign(true); 
 	return;
 }
+

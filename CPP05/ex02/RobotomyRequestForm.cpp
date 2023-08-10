@@ -1,11 +1,30 @@
 #include "RobotomyRequestForm.hpp"
-#include <iostream>
+#include "Bureaucrat.hpp"
+
+RobotomyRequestForm::RobotomyRequestForm()
+{
+    std::cout << "Robotomy Form criated" << std::endl;
+}
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("RobotomyRequestForm", 72, 45)
 {
     this->setTarget(target);
     std::cout << *this << std::endl;
     return ;
+}
+
+void RobotomyRequestForm::beSigned(Bureaucrat const &b)
+{
+	if (b.getGrade() > this->getGradeToSign())
+			throw Form::GradeTooLowException();
+	else
+			this->setSign(true); 
+	return;
+}
+
+RobotomyRequestForm::~RobotomyRequestForm()
+{
+    std::cout << "Robotomy Form destructor called" << std::endl;
 }
 
 bool    RobotomyRequestForm::execute(Bureaucrat const &executor) const

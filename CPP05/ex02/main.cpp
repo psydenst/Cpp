@@ -21,7 +21,10 @@ int main()
 		Three.decrementGrade();
 
 		PresidentialPardonForm President("President");
-		RobotomyRequestForm Robot("");
+		RobotomyRequestForm Robot("a");
+		ShrubberyCreationForm Schub("psy");
 
-
+		Robot.execute(Three);
+		President.execute(Two);
+		Schub.execute(One);
 }

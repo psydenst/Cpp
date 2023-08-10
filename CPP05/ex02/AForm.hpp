@@ -14,6 +14,7 @@ class Form
 	bool isSigned;
 	std::string target;
 
+	protected: 
 	class GradeTooHighException : public std::exception
 	{
 		public:
@@ -23,7 +24,7 @@ class Form
 		}
 	};
 
-	class GradeTooLowException
+	class GradeTooLowException : public std::exception
 	{
 		public:
 		virtual const char * what() const throw()
@@ -54,8 +55,9 @@ class Form
 	std::string getTarget() const;
 	bool		execute(Bureaucrat const &executor) const;
 	// OTHERS
-	virtual void	beSigned(Bureaucrat const b) = 0;
+	virtual void	beSigned(Bureaucrat const &b) = 0;
 	void		setTarget(std::string target);
+	void		setSign(bool i);
 
 };
 
