@@ -1,22 +1,32 @@
 // INCLUDE 42 HEADER
 
 #include "ScalarConverter.hpp"
+#include <sstream>
+#include <string>
+
+/*
+static int s_toi(std::string s) 
+{
+    long int i;
+    std::istringstream(s) >> i;
+    if (i > INT_MAX || i < INT_MIN)
+    {
+        return (-1);
+    }
+    return i;
+} */
+
 
 int ScalarConverter::toInt(std::string a)
 {
     int value = 0;
     try
     {
-        value = stoi(a);
+        value = std::atoi(a.c_str());
     }
-    catch (const std::invalid_argument &e)
+    catch (...)
     {
         std::cerr << "Not a valid argument" << std::endl;
-        return (-1);
-    }
-    catch (std::out_of_range &e)
-    {
-        std::cerr << "Out of range :/" << std::endl;
         return (-1);
     }
     return (value);

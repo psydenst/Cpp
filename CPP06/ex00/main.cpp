@@ -4,6 +4,5 @@
 
 int main()
 {
-    std::cout << ScalarConverter::toDouble("s1") << std::endl;
-
+    std::cout << ScalarConverter::toInt("0") << std::endl;
 }
