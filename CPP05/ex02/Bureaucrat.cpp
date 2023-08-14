@@ -30,7 +30,7 @@ void Bureaucrat::incrementGrade()
 		if (this->grade > 150)
 			throw Bureaucrat::GradeTooHighException();
     }
- 	catch(GradeTooHighException e)
+ 	catch(GradeTooHighException &e)
     {
 		std::cerr << e.what() << '\n';
     }
@@ -46,7 +46,7 @@ void Bureaucrat::decrementGrade()
 		if (this->grade > 150)
 			throw Bureaucrat::GradeTooHighException();
     }
-    catch(GradeTooLowException e)
+    catch(GradeTooLowException &e)
     {
     	std::cerr << e.what() << '\n';
 	}
@@ -74,7 +74,7 @@ std::ostream &operator<<(std::ostream &outputFile, Bureaucrat const &i)
 	return (outputFile);
 }
 
-void    Bureaucrat::signForm(Form form) const
+void    Bureaucrat::signForm(Form &form) const
 {
     if (form.getGradeToSign() == -50)
     {
@@ -82,7 +82,7 @@ void    Bureaucrat::signForm(Form form) const
         {
             form.beSigned(*this);
         }
-        catch (GradeTooLowException e)
+        catch (GradeTooLowException &e)
         {
                 std::cerr << this->getName() << "couldn't sign "
                 << form.getName() << " because" << e.what()
@@ -92,3 +92,4 @@ void    Bureaucrat::signForm(Form form) const
 	std:: cout << this->getName() << " couldn't sign " << form.getName()
 	<< " because he doens't has the grade" << std::endl;
 }
+

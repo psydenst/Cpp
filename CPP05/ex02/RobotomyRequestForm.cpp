@@ -1,5 +1,6 @@
 #include "RobotomyRequestForm.hpp"
 #include "Bureaucrat.hpp"
+#include<cstdlib>
 
 RobotomyRequestForm::RobotomyRequestForm()
 {
@@ -35,8 +36,10 @@ bool    RobotomyRequestForm::execute(Bureaucrat const &executor) const
         if ((rand() % 2) != 0)
             std::cout << "Robotomization Failure" << std::endl;
         else
+        {
             std::cout << "ROBOT " << this->getTarget() << "ROBOTOMIZED" << std::endl;
             return (true);
+        }
     }
     return (false);
 }
