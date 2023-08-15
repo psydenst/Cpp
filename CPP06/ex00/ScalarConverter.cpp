@@ -4,31 +4,27 @@
 #include <sstream>
 #include <string>
 
-/*
-static int s_toi(std::string s) 
-{
-    long int i;
-    std::istringstream(s) >> i;
-    if (i > INT_MAX || i < INT_MIN)
-    {
-        return (-1);
-    }
-    return i;
-} */
-
-
 int ScalarConverter::toInt(std::string a)
 {
     int value = 0;
     try
     {
+        if (a.empty())
+            throw (NotValidException());
+        for (long unsigned int i = 0; i < a.size(); ++i)
+        {   
+            if (!isdigit(a[i]) && a[i] != '+' && a[i] != '-' && a[i] != 'f' && a[i] != '.')
+                throw (NotValidException());
+        }
         value = std::atoi(a.c_str());
+    
     }
-    catch (...)
+    catch (NotValidException &e)
     {
-        std::cerr << "Not a valid argument" << std::endl;
+        std::cerr << "Error: " << e.what() << std::endl;
         return (-1);
     }
+    std::cout << "int: " << value << std::endl;
     return (value);
 }
 
@@ -37,57 +33,77 @@ double ScalarConverter::toDouble(std::string a)
     double value = 0;
     try
     {
-        value = stod(a);
+        if (a.empty())
+            throw (NotValidException());
+        for (long unsigned int i = 0; i < a.size(); ++i)
+        {   
+            if (!isdigit(a[i]) && a[i] != '.' && a[i] != '+' && a[i] != '-' && a[i] != 'f')
+                throw (NotValidException());
+        }
+        value = std::strtod(a.c_str(), NULL);
     }
-    catch (const std::invalid_argument &e)
+    catch (NotValidException &e)
     {
-        std::cerr << "Not a valid argument" << std::endl;
+        std::cerr << "Error: " << e.what() << std::endl;
         return (-1);
     }
-    catch (std::out_of_range &e)
-    {
-        std::cerr << "Out of range :/" << std::endl;
-        return (-1);
-    }
+    std::cout << "double: " << value << std::endl;
     return (value);
 }
 
 float ScalarConverter::toFloat(std::string a)
 {
-   float value = 0;
+    float value = 0;
     try
     {
-        value = stof(a);
+        if (a.empty())
+            throw (NotValidException());
+        for (long unsigned int i = 0; i < a.size(); ++i)
+        {   
+            if (!isdigit(a[i]) && a[i] != '.' &&
+                    a[i] != '+' && a[i] != '-' && a[i] != 'f')
+                throw (NotValidException());
+        }
+        value = std::atof(a.c_str());
     }
-    catch (const std::invalid_argument &e)
+    catch (NotValidException &e)
     {
-        std::cerr << "Not a valid argument" << std::endl;
-        return (-1);  
-    }
-    catch (std::out_of_range &e)
-    {
-        std::cerr << "Out of range :/" << std::endl;
+        std::cerr << "Error: " << e.what() << std::endl;
         return (-1);
     }
+    std::cout << "float: " << value << "f" << std::endl;
     return (value);
 }
 
 char ScalarConverter::toChar(std::string a)
 {
-    char value;
+    int value;
     try
     {
-
-        value = a[0];
-        if (a.length() > 1)
-        {
-            throw std::invalid_argument("Invalid argument");
+        if (a.empty())
+            throw (NotValidException());
+        for (long unsigned int i = 0; i < a.size(); ++i)
+        {   
+            if (!isdigit(a[i]) && a[i] != '.' &&
+                    a[i] != '+' && a[i] != '-' && a[i] != 'f')
+                throw (NotValidException());
         }
+        value = std::atoi(a.c_str()); 
+        if (value < 32 || value > 126)
+            throw (NonDisplayable());
     }    
-    catch (const std::invalid_argument &e)
+    catch (NotValidException &e)
     {
-        std::cerr << "Not a valid argument" << std::endl;
+        std::cerr << "Error: " << e.what() << std::endl;
         return ('\0');
     }
+    catch (NonDisplayable &e)
+    {
+        std::cout << e.what() << std::endl;
+        return ('\0');
+    }
+    std::cout << "char: " << (char)value << std::endl;
     return (value);
 }
+
+

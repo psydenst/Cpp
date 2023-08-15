@@ -4,7 +4,8 @@
 #define SCALAR_CONVERTER_HPP
 
 #include <iostream>
-
+#include <cstdlib>
+#include <stdlib.h>     /* strtod */
 
 class ScalarConverter
 {
@@ -20,6 +21,15 @@ class ScalarConverter
         }
     };
 
+    class NonDisplayable
+    {
+        public:
+        const char * what() const throw()
+        {
+            return ("Non displayable");
+        }
+    };
+    
     static int toInt(std::string a);
     static double toDouble(std::string a);
     static float toFloat(std::string a);
