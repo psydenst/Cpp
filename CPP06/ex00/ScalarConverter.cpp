@@ -7,6 +7,13 @@
 int ScalarConverter::toInt(std::string a)
 {
     int value = 0;
+ 
+
+    if (a.size() == 1 && isalpha(a[0]))
+    {
+        std::cout << "int: " << (int)a[0] << std::endl;
+        return ((int)a[0]);
+    }
     try
     {
         if (a.empty())
@@ -31,6 +38,12 @@ int ScalarConverter::toInt(std::string a)
 double ScalarConverter::toDouble(std::string a)
 {
     double value = 0;
+
+    if (a.size() == 1 && isalpha(a[0]))
+    {
+        std::cout << "double: " << (double)a[0] << std::endl;
+        return ((double)a[0]);
+    }
     try
     {
         if (a.empty())
@@ -54,6 +67,12 @@ double ScalarConverter::toDouble(std::string a)
 float ScalarConverter::toFloat(std::string a)
 {
     float value = 0;
+
+    if (a.size() == 1 && isalpha(a[0]))
+    {
+        std::cout << "float: " << (float)a[0] << "f" << std::endl;
+        return ((float)a[0]);
+    }
     try
     {
         if (a.empty())
@@ -78,6 +97,12 @@ float ScalarConverter::toFloat(std::string a)
 char ScalarConverter::toChar(std::string a)
 {
     int value;
+    
+    if (a.size() == 1 && isalpha(a[0]))
+    {
+        std::cout << "char: " << a[0] << std::endl;
+        return (a[0]);
+    }
     try
     {
         if (a.empty())
