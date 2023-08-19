@@ -6,29 +6,27 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:26:49 by psydenst          #+#    #+#             */
-/*   Updated: 2023/08/02 17:33:26 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/08/18 22:05:36 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-Form::Form()
+Form::Form() : gradeToSign(50), gradeToExecute(50)
 {
-	std::cout << "Default constructor called, with default gradeToSign -50 and gradeToExecute -50" << std::endl;
-	this->gradeToSign = -50;
-	this->gradeToExecute = -50;
+	std::cout << "Default Form constructor called" << std::endl;
+	this->isSigned = false;
 }
 
-Form::Form(int toSign, int toExecute, std::string name) : name(name)
+Form::Form(int toSign, int toExecute, std::string name) : name(name), gradeToSign(toSign), gradeToExecute(toExecute)
 {
-	std::cout << "Default constructor called, with gradeToSign " << toSign
-	<< " and gradeToExecute" << toExecute << std::endl;
-	this->gradeToSign = toSign;
-	this->gradeToExecute = toExecute;
+	std::cout << "Default Form constructor called, with gradeToSign " << toSign
+	<< " and gradeToExecute " << toExecute << std::endl;
+	this->isSigned = false;
 }
 
-Form::Form(Form const &instance)
+Form::Form(Form const &instance) : name(instance.getName()), gradeToSign(instance.getGradeToSign()), gradeToExecute(instance.getGradeToExecute()) 
 {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = instance;
@@ -70,22 +68,25 @@ std::ostream &operator <<(std::ostream &outputFile, Form const &i)
 	return (outputFile);
 }
 
-int Form::isSign()
-{
-	if (this->gradeToSign == -50  && this->gradeToExecute == -50)
-			this->isSigned = false;
-	else
-			this->isSigned = true;
-	return (0);
-}
-
-
 void Form::beSigned(Bureaucrat const b)
 {
-	if (b.getGrade() > this->getGradeToSign())
+	try
+	{
+		if (b.getGrade() > this->getGradeToSign())
 			throw Form::GradeTooLowException();
-	else
-			this->isSigned = true; 
+	}
+	catch(Form::GradeTooLowException &e)
+	{
+		std::cout << e.what() <<std::endl;
+	}
+	this->isSigned = true; 
 	return;
 }
+
+Form    &Form::operator=(Form const &right_hand_side)
+{
+        this->isSigned = right_hand_side.getIsSigned();
+        return (*this);
+}
+
 
