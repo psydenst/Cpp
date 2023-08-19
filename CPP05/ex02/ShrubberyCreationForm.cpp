@@ -3,7 +3,7 @@
 #include <iostream>
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form("ShrubberyCreationForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137)
 {
     this->setTarget(target);
     this->createFile();
@@ -32,7 +32,7 @@ void    ShrubberyCreationForm::createFile(void) const
 
 bool    ShrubberyCreationForm::execute (Bureaucrat const &executor) const
 {
-    if (Form::execute(executor))
+    if (AForm::execute(executor))
     {
         this->createFile();
         return (true);
@@ -69,8 +69,10 @@ std::ostream &operator << (std::ostream &outputFile, ShrubberyCreationForm const
 void ShrubberyCreationForm::beSigned(Bureaucrat const &b)
 {
 	if (b.getGrade() > this->getGradeToSign())
-			throw Form::GradeTooLowException();
+			throw AForm::GradeTooLowException();
 	else
 			this->setSign(true); 
 	return;
 }
+
+

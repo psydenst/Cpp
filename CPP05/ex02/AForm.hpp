@@ -5,12 +5,12 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	private:
-	std::string name;
-	int  gradeToSign;
-	int  gradeToExecute;
+	std::string const name;
+	int  const gradeToSign;
+	int  const gradeToExecute;
 	bool isSigned;
 	std::string target;
 
@@ -38,15 +38,14 @@ class Form
 		public:
 		virtual const char * what() const throw()
 		{
-			return ("Form not sign :/\n");
+			return ("AForm not sign :/\n");
 		}
 	};
 	public:
 
-	Form();
-	Form(std::string name, int toSign, int toExecute);
-	Form(Form const &instance);
-	~Form();
+	AForm(std::string name, int toSign, int toExecute);
+	AForm(AForm const &instance);
+	~AForm();
 	// GETTERS
 	int 		getGradeToExecute(void) const;
 	int			getGradeToSign(void) const;
@@ -58,9 +57,11 @@ class Form
 	virtual void	beSigned(Bureaucrat const &b) = 0;
 	void		setTarget(std::string target);
 	void		setSign(bool i);
+	AForm& operator=(AForm const &right_hand_side);
+
 
 };
 
-std::ostream &operator << (std::ostream &outputFile, Form const &i);
+std::ostream &operator << (std::ostream &outputFile, AForm const &i);
 
 #endif

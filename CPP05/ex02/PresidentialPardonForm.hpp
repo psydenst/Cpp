@@ -3,11 +3,10 @@
 
 #include "AForm.hpp"
 
-class PresidentialPardonForm: public Form
+class PresidentialPardonForm: public AForm
 {
 	private:
 		bool isSigned;
-		PresidentialPardonForm(void);
 
 	public:
 		PresidentialPardonForm(std::string target);

@@ -2,12 +2,7 @@
 #include "Bureaucrat.hpp"
 #include<cstdlib>
 
-RobotomyRequestForm::RobotomyRequestForm()
-{
-    std::cout << "Robotomy Form criated" << std::endl;
-}
-
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("RobotomyRequestForm", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45)
 {
     this->setTarget(target);
     std::cout << *this << std::endl;
@@ -17,7 +12,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("RobotomyReq
 void RobotomyRequestForm::beSigned(Bureaucrat const &b)
 {
 	if (b.getGrade() > this->getGradeToSign())
-			throw Form::GradeTooLowException();
+			throw AForm::GradeTooLowException();
 	else
 			this->setSign(true); 
 	return;
@@ -30,7 +25,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 bool    RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
-    if (Form::execute(executor))
+    if (AForm::execute(executor))
     {
         std::srand((unsigned int)time(NULL));
         if ((rand() % 2) != 0)

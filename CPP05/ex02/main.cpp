@@ -11,7 +11,7 @@ int main()
 		std::cout << "Enter a grade: ";
 		std::cin >> variable;
 		Bureaucrat One(variable);
-
+		PresidentialPardonForm form("form");
 		Bureaucrat Two(149);
 		Two.incrementGrade();
 		Two.incrementGrade();
@@ -27,4 +27,6 @@ int main()
 		Robot.execute(Three);
 		President.execute(Two);
 		Schub.execute(One);
+		Three.executeForm(form);
+		
 }

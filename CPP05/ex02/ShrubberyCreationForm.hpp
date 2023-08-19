@@ -3,10 +3,9 @@
 
 #include "AForm.hpp"
 
-class ShrubberyCreationForm: public Form
+class ShrubberyCreationForm: public AForm
 {
 	private:
-		ShrubberyCreationForm(void);
 		void	createFile(void) const;
 	public:
 		ShrubberyCreationForm(std::string target);

@@ -4,7 +4,7 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : Form("PresidentialPardonForm", 25, 5)
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", 25, 5)
 {
     this->setTarget(target);
     std::cout << *this << std::endl;
@@ -13,7 +13,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target) : Form("Presi
 
 bool    PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
-    if (Form::execute(executor))
+    if (AForm::execute(executor))
     {
         std::cout << this->getTarget() << " has been pardoned by Zafod Beeblebrox" << std::endl;
         return (true);
@@ -57,7 +57,7 @@ void PresidentialPardonForm::setSign(bool i)
 void PresidentialPardonForm::beSigned(Bureaucrat const &b)
 {
 	if (b.getGrade() > this->getGradeToSign())
-			throw Form::GradeTooLowException();
+			throw AForm::GradeTooLowException();
 	else
 			this->setSign(true); 
 	return;

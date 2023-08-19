@@ -3,10 +3,9 @@
 
 #include "AForm.hpp"
 
-class RobotomyRequestForm: public Form
+class RobotomyRequestForm: public AForm
 {
 	private:
-		RobotomyRequestForm(void);
 	public:
 		RobotomyRequestForm(std::string target);
 		RobotomyRequestForm(RobotomyRequestForm const &instance);

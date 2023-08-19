@@ -1,4 +1,14 @@
-// INCLUDE 42 HEADER
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/18 22:57:44 by psydenst          #+#    #+#             */
+/*   Updated: 2023/08/18 23:06:13 by psydenst         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
@@ -22,13 +32,13 @@ Bureaucrat::Bureaucrat(Bureaucrat const &instance)
 
 void Bureaucrat::incrementGrade()
 {
-    this->grade++;
+    this->grade--;
     try
     {
         if (this->grade < 1)
-			throw Bureaucrat::GradeTooLowException();
-		if (this->grade > 150)
 			throw Bureaucrat::GradeTooHighException();
+		if (this->grade > 150)
+			throw Bureaucrat::GradeTooLowException();
     }
  	catch(GradeTooHighException &e)
     {
@@ -38,13 +48,13 @@ void Bureaucrat::incrementGrade()
 
 void Bureaucrat::decrementGrade()
 {
-    this->grade--;
+    this->grade++;
     try
     {
         if (this->grade < 1)
-			throw Bureaucrat::GradeTooLowException();
-		if (this->grade > 150)
 			throw Bureaucrat::GradeTooHighException();
+		if (this->grade > 150)
+			throw Bureaucrat::GradeTooLowException();
     }
     catch(GradeTooLowException &e)
     {
@@ -74,7 +84,7 @@ std::ostream &operator<<(std::ostream &outputFile, Bureaucrat const &i)
 	return (outputFile);
 }
 
-void    Bureaucrat::signForm(Form &form) const
+void    Bureaucrat::signForm(AForm &form) const
 {
     if (form.getGradeToSign() == -50)
     {
@@ -93,3 +103,26 @@ void    Bureaucrat::signForm(Form &form) const
 	<< " because he doens't has the grade" << std::endl;
 }
 
+void            Bureaucrat::executeForm(AForm const & form)
+{
+        try
+        {
+                form.execute(*this);
+        }
+        catch(const std::exception& e)
+        {
+                std::cerr       << this->name
+                                        << " cannot execute "
+                                        << form.getName()
+                                        << " because "
+                                        << e.what()
+                                        << std::endl;
+                return ;
+        }
+        std::cout       << this->name
+                                << " executes "
+                                << form.getName()
+                                << std::endl
+                                << std::endl;
+                return ;
+}
