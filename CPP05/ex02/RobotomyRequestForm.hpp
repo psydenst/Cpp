@@ -12,8 +12,8 @@ class RobotomyRequestForm: public AForm
 		~RobotomyRequestForm();
 		bool execute(Bureaucrat const &executor) const;
 		void beSigned(Bureaucrat const &b);
-
 		RobotomyRequestForm &operator=(RobotomyRequestForm const &right_hand_side);
+		void    validBuro(Bureaucrat const &b);
 };
 std::ostream &operator << (std::ostream &outputFile, RobotomyRequestForm const &i);
 

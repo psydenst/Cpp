@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 22:57:44 by psydenst          #+#    #+#             */
-/*   Updated: 2023/08/21 17:34:40 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/08/21 19:15:16 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,30 +102,6 @@ void    Bureaucrat::signForm(AForm &form) const
 	std:: cout << this->getName() << " couldn't sign " << form.getName()
 	<< " because he doens't has the grade" << std::endl;
 }
-/*
-void            Bureaucrat::executeForm(AForm const & form)
-{
-        try
-        {
-                form.execute(*this);
-        }
-        catch(const std::exception& e)
-        {
-                std::cerr       << this->name
-                                        << " cannot execute "
-                                        << form.getName()
-                                        << " because "
-                                        << e.what()
-                                        << std::endl;
-                return ;
-        }
-        std::cout       << this->name
-                                << " executes "
-                                << form.getName()
-                                << std::endl
-                                << std::endl;
-                return ;
-} */
 
 void Bureaucrat::executeForm(AForm const &form)
 {
@@ -136,14 +112,17 @@ void Bureaucrat::executeForm(AForm const &form)
 	catch (const AForm::NoSignatureException &e)
 	{
         	std::cerr << this->name << " cannot execute " << form.getName() << " because " << e.what() << std::endl;
+		return ;
 	} 
 	catch (const AForm::GradeTooLowException &e)
 	{
         	std::cerr << this->name << " cannot execute " << form.getName() << " because " << e.what() << std::endl;
+		return ;
 	} 
 	catch (const std::exception &e)
 	{
         	std::cerr << this->name << " cannot execute " << form.getName() << " because " << e.what() << std::endl;
+		return ;
 	}
 	std::cout << this->name << " executes " << form.getName() << std::endl << std::endl;
 }

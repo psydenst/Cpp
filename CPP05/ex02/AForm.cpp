@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:51:55 by psydenst          #+#    #+#             */
-/*   Updated: 2023/08/21 16:52:00 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/08/21 18:31:24 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,25 +23,24 @@ AForm::AForm(std::string name, int toSign, int toExecute) : name(name), gradeToS
 
 bool		AForm::execute(Bureaucrat const &executor) const
 {
-	try 
-	{
-        	if (!this->isSigned)
+	
+        if (!this->isSigned)
         	{
-	            throw AForm::NoSignatureException();
-	}
+		   throw AForm::NoSignatureException();
+		}
 
-        if (executor.getGrade() > this->getGradeToExecute())
-	{
-		throw AForm::GradeTooLowException();
-	}
+ 	if (executor.getGrade() > this->getGradeToExecute())
+		{
+			throw AForm::GradeTooLowException();
+		}
         // If the form is signed and the executor's grade is acceptable, execute the form
         return true;
-	} 
+/* 
 	catch (const AForm::NoSignatureException &e) 
 	{
         std::cerr << "Exception: " << e.what() << std::endl;
         return false;
-    } 
+    	} 
 	catch (const AForm::GradeTooLowException &e)
 	{
         std::cerr << "Exception: " << e.what() << std::endl;
@@ -51,7 +50,7 @@ bool		AForm::execute(Bureaucrat const &executor) const
 	{
         std::cerr << "Exception: " << e.what() << std::endl;
         return false;
-    }
+    } */
 }
 
 AForm::AForm(AForm const &instance) : name(instance.getName()), gradeToSign(instance.getGradeToSign()), gradeToExecute(instance.getGradeToExecute())

@@ -9,7 +9,7 @@
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137)
 {
     this->setTarget(target);
-    std::cout << YELLOW << "Shrubbery Form constructor called"<< RESET << std::endl;
+    std::cout << YELLOW << "Shrubbery Form constructor called, with grade to sign "<< this->getGradeToSign() << " and grade to execute "<< this->getGradeToExecute() << RESET << std::endl;
     return ;
 }
 

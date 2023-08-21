@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:57:04 by psydenst          #+#    #+#             */
-/*   Updated: 2023/08/21 18:00:51 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/08/21 19:09:22 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,32 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRe
 	return ;
 }
 
+void    RobotomyRequestForm::validBuro(Bureaucrat const &b)
+{
+        if (b.getGrade() > this->getGradeToSign())
+        {
+                throw AForm::GradeTooLowException();
+                return ;
+        }
+        return ;
+}
+
 void RobotomyRequestForm::beSigned(Bureaucrat const &b)
 {
-	if (b.getGrade() > this->getGradeToSign())
-			throw AForm::GradeTooLowException();
-	else
-			this->setSign(true); 
-	return;
+        try
+        {
+                validBuro(b);
+                this->isSigned = true;
+        }
+        catch (GradeTooLowException e)
+        {
+                std::cout << b.getName() << " didn't signed because: "<< e.what() << std::endl;
+        }
+        return;
 }
+
+
+
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {

@@ -62,13 +62,27 @@ void PresidentialPardonForm::setSign(bool i)
     this->isSigned = i;
 }
 
+void	PresidentialPardonForm::validBuro(Bureaucrat const &b)
+{
+	if (b.getGrade() > this->getGradeToSign())
+	{	
+		throw AForm::GradeTooLowException();
+		return ;
+	}
+	return ;
+}
 
 void PresidentialPardonForm::beSigned(Bureaucrat const &b)
 {
-	if (b.getGrade() > this->getGradeToSign())
-			throw AForm::GradeTooLowException();
-	else
-			this->isSigned = true;
+	try
+	{
+		validBuro(b);
+		this->isSigned = true;
+	}
+	catch (GradeTooLowException e)
+	{
+		std::cout << b.getName() << " didn't signed because: "<< e.what() << std::endl;
+	}
 	return;
 }
 

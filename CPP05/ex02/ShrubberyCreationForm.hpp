@@ -11,9 +11,10 @@ class ShrubberyCreationForm: public AForm
 		ShrubberyCreationForm(std::string target);
 		ShrubberyCreationForm(ShrubberyCreationForm const &instance);
 		~ShrubberyCreationForm(void);
-        bool	execute(Bureaucrat const &executor) const;
+        	bool	execute(Bureaucrat const &executor) const;
 		void beSigned(Bureaucrat const &b);
-        ShrubberyCreationForm &operator=(ShrubberyCreationForm const &right_hand_side);
+        	ShrubberyCreationForm &operator=(ShrubberyCreationForm const &right_hand_side);
+		void validBuro(Bureaucrat const &b);
 };
 
 std::ostream &operator<<(std::ostream &outputFile, ShrubberyCreationForm const &i);

@@ -16,7 +16,7 @@ class PresidentialPardonForm: public AForm
 		PresidentialPardonForm &operator=(PresidentialPardonForm const &right_hand_side);
 		void beSigned(Bureaucrat const &b);
 		void setSign(bool i);
-
+		void validBuro(Bureaucrat const &b);
 };
 
 std::ostream &operator << (std::ostream &outputFile, PresidentialPardonForm const &i);

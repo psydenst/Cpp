@@ -6,7 +6,7 @@
 /*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:51:34 by psydenst          #+#    #+#             */
-/*   Updated: 2023/08/21 18:06:12 by psydenst         ###   ########.fr       */
+/*   Updated: 2023/08/21 19:11:11 by psydenst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,24 @@ int main()
 */
 		
 		Bureaucrat Low(150, "Nilson");
+		Bureaucrat Mid(100, "Geraldo");
 		ShrubberyCreationForm Shrub("Shrub");
-		PresidentialPardonForm Pres2("pres2");
-		Low.executeForm(Pres2);		
+		PresidentialPardonForm Pres("pres2");
+		RobotomyRequestForm Robot("Robot");
+		Low.executeForm(Pres);		
+		Robot.beSigned(Mid);
 		Low.executeForm(Shrub);
+		Low.executeForm(Robot);
 
+		Bureaucrat High(1, "Nilson");
+		ShrubberyCreationForm Shrub2("Shrub");
+		PresidentialPardonForm Pres2("pres2");
+		RobotomyRequestForm Robot2("Robot");
+		Shrub2.beSigned(High);
+		Pres2.beSigned(High);
+		Robot2.beSigned(High);
+		High.executeForm(Pres2);		
+		High.executeForm(Shrub2);
+		High.executeForm(Robot2);
 
-		
-	
 }
