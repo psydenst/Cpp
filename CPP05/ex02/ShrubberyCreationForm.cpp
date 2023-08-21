@@ -3,11 +3,13 @@
 #include <iostream>
 #include <fstream>
 
+#define YELLOW "\e[33m"
+#define RESET "\e[0m"
+
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137)
 {
     this->setTarget(target);
-    this->createFile();
-    std::cout << "Shrubbery Form constructor called"<< std::endl;
+    std::cout << YELLOW << "Shrubbery Form constructor called"<< RESET << std::endl;
     return ;
 }
 
@@ -22,7 +24,7 @@ void    ShrubberyCreationForm::createFile(void) const
     {
         while (getline(inputFile, line))
             outputFile << line << std::endl;
-        std::cout << name << " ASCII tree created" << std::endl;
+        std::cout << YELLOW << name << " ASCII tree created" << RESET << std::endl;
     }
     else
         std::cout << "Error creating file" << std::endl;
@@ -42,12 +44,12 @@ bool    ShrubberyCreationForm::execute (Bureaucrat const &executor) const
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-    std::cout << "Shrubbery Form destructor called" << std::endl;
+    std::cout << YELLOW << "Shrubbery Form destructor called" << RESET << std::endl;
 }
 
 std::ostream &operator << (std::ostream &outputFile, ShrubberyCreationForm const &i)
 {
-    outputFile  << i.getName()
+    outputFile  << YELLOW << i.getName()
                 << std::endl
                 << "Grade to sign: "
                 << i.getGradeToSign()
@@ -60,9 +62,9 @@ std::ostream &operator << (std::ostream &outputFile, ShrubberyCreationForm const
                 << std::endl
                 << "Is signed: ";
     if (i.getIsSigned())
-        outputFile << "Yes." << std::endl;
+        outputFile << "Yes." << RESET <<std::endl;
     else
-        outputFile << "No." << std::endl;
+        outputFile << "No." << RESET << std::endl;
     return (outputFile);
 }
 

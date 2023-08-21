@@ -1,4 +1,14 @@
-// INCLUDE 42 HEADER
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: psydenst <psydenst@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/21 16:51:55 by psydenst          #+#    #+#             */
+/*   Updated: 2023/08/21 16:52:00 by psydenst         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
@@ -13,17 +23,17 @@ AForm::AForm(std::string name, int toSign, int toExecute) : name(name), gradeToS
 
 bool		AForm::execute(Bureaucrat const &executor) const
 {
-    try {
-        if (!this->isSigned)
-        {
-            throw AForm::NoSignatureException();
-        }
+	try 
+	{
+        	if (!this->isSigned)
+        	{
+	            throw AForm::NoSignatureException();
+	}
 
         if (executor.getGrade() > this->getGradeToExecute())
-        {
-            throw AForm::GradeTooLowException();
-        }
-
+	{
+		throw AForm::GradeTooLowException();
+	}
         // If the form is signed and the executor's grade is acceptable, execute the form
         return true;
 	} 

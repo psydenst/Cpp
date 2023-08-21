@@ -7,14 +7,14 @@ class Bureaucrat;
 
 class AForm
 {
-	private:
+	protected:
 	std::string const name;
 	int  const gradeToSign;
 	int  const gradeToExecute;
 	bool isSigned;
 	std::string target;
 
-	protected: 
+	public: 
 	class GradeTooHighException : public std::exception
 	{
 		public:
@@ -41,24 +41,24 @@ class AForm
 			return ("AForm not sign :/\n");
 		}
 	};
-	public:
+
 
 	AForm(std::string name, int toSign, int toExecute);
 	AForm(AForm const &instance);
 	~AForm();
 	// GETTERS
-	int 		getGradeToExecute(void) const;
-	int			getGradeToSign(void) const;
-	std::string getName(void) const;
-	int			getIsSigned() const;
-	std::string getTarget() const;
-	bool		execute(Bureaucrat const &executor) const;
+	int		getGradeToExecute(void) const;
+	int		getGradeToSign(void) const;
+	std::string	getName(void) const;
+	int		getIsSigned() const;
+	std::string	getTarget() const;
+	
 	// OTHERS
 	virtual void	beSigned(Bureaucrat const &b) = 0;
 	void		setTarget(std::string target);
 	void		setSign(bool i);
 	AForm& operator=(AForm const &right_hand_side);
-
+	virtual	bool		execute(Bureaucrat const &executor) const = 0;
 
 };
 

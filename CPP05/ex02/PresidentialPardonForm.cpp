@@ -4,18 +4,27 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 
+# define PINK                   "\e[0;38;5;199m"
+# define RESET                  "\e[0m"
+
+
 PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", 25, 5)
 {
-    this->setTarget(target);
-    std::cout << *this << std::endl;
-    return ;
+	this->setTarget(target);
+	std::cout << PINK << "Default PresidentialPardonForm constructor, with grade to sign " << this->getGradeToSign () << " and gradeToExecute " << this->getGradeToExecute() << RESET << std::endl;
+	return ;
+}
+
+std::string PresidentialPardonForm::getName (void) const
+{
+	return (this->name);
 }
 
 bool    PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
     if (AForm::execute(executor))
     {
-        std::cout << this->getTarget() << " has been pardoned by Zafod Beeblebrox" << std::endl;
+        std::cout << PINK << this->getTarget() << " has been pardoned by Zafod Beeblebrox" << RESET << std::endl;
         return (true);
     }
     return (true);
@@ -23,12 +32,12 @@ bool    PresidentialPardonForm::execute(Bureaucrat const &executor) const
 
 PresidentialPardonForm::~PresidentialPardonForm()
 {
-    std::cout << "Presidential Pardon Form destructor called" << std::endl;
+    std::cout << PINK << "Presidential Pardon Form destructor called" << RESET << std::endl;
 }
 
 std::ostream &operator<<(std::ostream &outputFile, PresidentialPardonForm const &i)
 {
-    outputFile  << i.getName() 
+    outputFile  << PINK << i.getName() 
                 << std::endl   
                 << "Grade to sign: "
                 << i.getGradeToSign()
@@ -42,9 +51,9 @@ std::ostream &operator<<(std::ostream &outputFile, PresidentialPardonForm const 
                 << "Is signed: ";
     
     if (i.getIsSigned())
-        outputFile << "Yes." << std::endl;
+        outputFile << "Yes." << RESET << std::endl;
     else
-        outputFile << "No." << std::endl;
+        outputFile << "No." << RESET << std::endl;
     return (outputFile);
 }
 
@@ -59,7 +68,7 @@ void PresidentialPardonForm::beSigned(Bureaucrat const &b)
 	if (b.getGrade() > this->getGradeToSign())
 			throw AForm::GradeTooLowException();
 	else
-			this->setSign(true); 
+			this->isSigned = true;
 	return;
 }
 

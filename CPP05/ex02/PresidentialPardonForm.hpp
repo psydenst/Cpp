@@ -6,12 +6,12 @@
 class PresidentialPardonForm: public AForm
 {
 	private:
-		bool isSigned;
 
 	public:
 		PresidentialPardonForm(std::string target);
 		PresidentialPardonForm(PresidentialPardonForm &instance);
 		~PresidentialPardonForm();
+		std::string getName (void) const;
 		bool execute(Bureaucrat const &executor) const;
 		PresidentialPardonForm &operator=(PresidentialPardonForm const &right_hand_side);
 		void beSigned(Bureaucrat const &b);
