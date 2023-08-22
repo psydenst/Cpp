@@ -97,6 +97,7 @@ int main(void)
     while (++i < 5)
     {
         random_class[i] = generate();
+        usleep(1500000);
     }
     Base &reference0 = *random_class[0];
     Base &reference1 = *random_class[1];
