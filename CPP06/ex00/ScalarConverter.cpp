@@ -9,7 +9,7 @@ int ScalarConverter::toInt(std::string a)
     int value = 0;
  
 
-    if (a.size() == 1 && isalpha(a[0]))
+    if (a.size() == 1 && isprint(a[0]))
     {
         std::cout << "int: " << (int)a[0] << std::endl;
         return ((int)a[0]);
@@ -20,7 +20,7 @@ int ScalarConverter::toInt(std::string a)
             throw (NotValidException());
         for (long unsigned int i = 0; i < a.size(); ++i)
         {   
-            if (!isdigit(a[i]) && a[i] != '+' && a[i] != '-' && a[i] != 'f' && a[i] != '.')
+            if (!isprint(a[i]) && a[i] != '+' && a[i] != '-' && a[i] != 'f' && a[i] != '.')
                 throw (NotValidException());
         }
         value = std::atoi(a.c_str());
@@ -39,7 +39,7 @@ double ScalarConverter::toDouble(std::string a)
 {
     double value = 0;
 
-    if (a.size() == 1 && isalpha(a[0]))
+    if (a.size() == 1 && isprint(a[0]))
     {
         std::cout << "double: " << (double)a[0] << std::endl;
         return ((double)a[0]);
@@ -50,7 +50,7 @@ double ScalarConverter::toDouble(std::string a)
             throw (NotValidException());
         for (long unsigned int i = 0; i < a.size(); ++i)
         {   
-            if (!isdigit(a[i]) && a[i] != '.' && a[i] != '+' && a[i] != '-' && a[i] != 'f')
+            if (!isprint(a[i]) && a[i] != '.' && a[i] != '+' && a[i] != '-' && a[i] != 'f')
                 throw (NotValidException());
         }
         value = std::strtod(a.c_str(), NULL);
@@ -68,7 +68,7 @@ float ScalarConverter::toFloat(std::string a)
 {
     float value = 0;
 
-    if (a.size() == 1 && isalpha(a[0]))
+    if (a.size() == 1 && isprint(a[0]))
     {
         std::cout << "float: " << (float)a[0] << "f" << std::endl;
         return ((float)a[0]);
@@ -98,7 +98,7 @@ char ScalarConverter::toChar(std::string a)
 {
     int value;
     
-    if (a.size() == 1 && isalpha(a[0]))
+    if (a.size() == 1 && isprint(a[0]))
     {
         std::cout << "char: " << a[0] << std::endl;
         return (a[0]);
@@ -109,7 +109,7 @@ char ScalarConverter::toChar(std::string a)
             throw (NotValidException());
         for (long unsigned int i = 0; i < a.size(); ++i)
         {   
-            if (!isdigit(a[i]) && a[i] != '.' &&
+            if (!isprint(a[i]) && a[i] != '.' &&
                     a[i] != '+' && a[i] != '-' && a[i] != 'f')
                 throw (NotValidException());
         }

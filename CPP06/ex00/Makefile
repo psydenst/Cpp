@@ -4,7 +4,7 @@ SRCS = *.cpp
 
 INCLUDE = -I includes
 
-CFLAGS = -Wall -Wextra -Werror -pedantic -std=c++98
+CFLAGS = -Wall -Wextra -Werror -pedantic -std=c++98 -g
 
 CC = g++
 
