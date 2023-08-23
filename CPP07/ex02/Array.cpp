@@ -30,12 +30,17 @@ Array<T>::Array(Array &instance) : _n(instance._n)
 template <typename T>
 Array<T> & Array<T>::operator=(const Array &rs)
 {
-    if (this != &rs) {
+    if (this != &rs)
+    {
         delete[] _ptr;
         _n = rs._n;
         _ptr = new T[_n];
         for (unsigned int i = 0; i < _n; i++)
+        { 
+            if (i > _n)
+                throw std::out_of_range(std::string("\033[1;31mIndex out of bounds\033[0m"));
             _ptr[i] = rs._ptr[i];
+        }
     }
     return *this;
 }
@@ -50,4 +55,11 @@ Array<T>::~Array()
     std::cout << PINK << "Destructor called GOOD BYEEEE" << RESET << std::endl;
 }
 
+template <typename T>
+T& Array<T>::operator[](int index)
+{
+	if (index < 0  || index >= (int)this->_n)
+		throw std::out_of_range(std::string("\033[1;31mIndex out of bounds\033[0m"));
+	return this->_ptr[index];
+}
 

@@ -22,6 +22,7 @@ class Array
     Array(Array &instance);
     ~Array();
     Array &operator = (Array const &rs);
+    T &operator [] (int index);
     // Getters
     T get_ptr();
     // Member functions
