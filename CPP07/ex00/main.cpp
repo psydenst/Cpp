@@ -1,6 +1,6 @@
 #include <iostream>
 
-// Function template
+// 42 HEADER
 
 template <typename T>
 void swap(T &a, T &b)

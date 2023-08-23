@@ -1,13 +1,31 @@
+// INCLUDE 42 HEADER
+//
+
 #ifndef CLASS_HPP
 #define CLASS_HPP
 
+#include <iostream>
+#include <cstddef>
+#include <ostream>
+
 
 template <typename T>
-Class Array
+
+class Array
 {   
     private: 
-    T one[];
+    unsigned int _n;
+    T   *_ptr;
     public:
+    Array();
+    Array(unsigned int n);
+    Array(Array &instance);
+    ~Array();
+    Array &operator = (Array const &rs);
+    // Getters
+    T get_ptr();
+    // Member functions
+    unsigned int size();
 };  
 
 #endif

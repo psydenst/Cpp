@@ -1,5 +1,9 @@
 #include <iostream>
 
+# define PINK                   "\x1B[0;38;5;199m"
+# define V_CYAN                 "\x1B[0;38;5;44m"
+# define RESET                  "\x1B[0m"
+
 template <typename T, typename Func>
 
 void iter(T *array, size_t length, Func func)
@@ -18,12 +22,21 @@ int main()
 {
     int intArray[] = {1, 2, 3, 4, 5};
     double doubleArray[] = {1.1, 2.2, 3.3, 4.4, 5.5};
+    char charArray[] = {'a', 'b', 'c', 'd', 'e'};
+    std::string stringArray[] = {"hello", "beautiful", "and", "bright", "world"}; 
 
-    std::cout << "Int array elements: ";
+    std::cout << PINK << "------ INT ------" << RESET << std::endl;
     iter(intArray, sizeof(intArray) / sizeof(intArray[0]), printElement<int>);
-    std::cout << std::endl << "Double array: ";
-    iter(intArray, sizeof(doubleArray) / sizeof(doubleArray[0]), printElement<double>);
     std::cout << std::endl;
+    std::cout << PINK << "------ DOUBLE-----" << RESET << std::endl;
+    iter(doubleArray, sizeof(doubleArray) / sizeof(doubleArray[0]), printElement<double>);
+    std::cout << std::endl;
+    std::cout << PINK << "------ CHAR ------" << RESET << std::endl;
+    iter(charArray, sizeof(charArray) / sizeof(charArray[0]), printElement<char>);
+    std::cout << std::endl;
+    std::cout << PINK << "------ STRING ------" << RESET << std::endl;
+    iter(stringArray, sizeof(stringArray) / sizeof(stringArray[0]), printElement<std::string>);
+    std::cout << std::endl;   
 }
 
 
