@@ -1,12 +1,8 @@
-// INCLUDE 42 HEADER
-
-#include "Array.hpp"
+#include <iostream> 
 
 # define PINK                   "\x1B[0;38;5;199m"
 # define V_CYAN                 "\x1B[0;38;5;44m"
 # define RESET                  "\x1B[0m"
-
-template class Array<int>;
 
 template <typename T>
 Array<T>::Array() : _n(0), _ptr(NULL) 

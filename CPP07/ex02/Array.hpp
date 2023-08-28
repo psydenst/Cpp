@@ -1,5 +1,4 @@
 // INCLUDE 42 HEADER
-//
 
 #ifndef CLASS_HPP
 #define CLASS_HPP
@@ -8,10 +7,7 @@
 #include <cstddef>
 #include <ostream>
 
-
-template <typename T>
-
-class Array
+template<typename T> class Array
 {   
     private: 
     unsigned int _n;
@@ -28,5 +24,7 @@ class Array
     // Member functions
     unsigned int size();
 };  
+
+#include "Array.tpp"
 
 #endif
