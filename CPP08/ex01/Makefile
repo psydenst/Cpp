@@ -1,4 +1,4 @@
-NAME = containers
+NAME = span
 
 SRCS = *.cpp
 

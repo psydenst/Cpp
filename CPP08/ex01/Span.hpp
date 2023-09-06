@@ -13,7 +13,7 @@ class Span
     public:
     Span();
     Span(unsigned int n);
-    Span(Span &instance);
+    Span(Span const &instance);
     ~Span();
     Span &operator=(Span const &right_hand_side);
     void addNumber(int nbr);

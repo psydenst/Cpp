@@ -2,20 +2,23 @@
 
 #include "Span.hpp"
 
-Span::Span(unsigned int n): N(n)
+Span::Span(const unsigned int n): N(n)
 {
     this->numbers.reserve(N);
-    std::cout << "Vector created" << std::endl;
+}
+
+Span::Span(Span const &instance)
+{
+    this->numbers = instance.numbers;
+    this->N = instance.N;
 }
 
 Span::Span()
 {
-    std::cout << "Default constructor called" << std::endl;
 }
 
 Span::~Span()
 {
-    std::cout << "Destructor called" << std::endl;
 }
 
 void    Span::addNumber(int nbr)
