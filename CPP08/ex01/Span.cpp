@@ -75,3 +75,14 @@ int Span::longestSpan()
     }
     return (ret);
 }
+
+void Span::addRange(const std::vector<int>::iterator &start, const std::vector<int>::iterator &end)
+{
+    std::vector<int>::iterator begin = start;
+    while (begin != end)
+        begin++;
+    unsigned int len = this->numbers.size() + std::distance(start, end);
+    if (len > this->N)
+        throw (std::runtime_error("Already Full"));
+    this->numbers.insert(this->numbers.end(), start, end);
+}
