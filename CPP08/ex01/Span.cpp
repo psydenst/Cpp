@@ -23,15 +23,9 @@ Span::~Span()
 
 void    Span::addNumber(int nbr)
 {
-    try
-    {
-        if (this->numbers.size() > this->N)
+
+    if (this->numbers.size() > this->N)
         throw (std::exception());
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
     this->numbers.push_back(nbr);
     return ;
 }
@@ -39,21 +33,45 @@ void    Span::addNumber(int nbr)
 int Span::shortestSpan()
 {
     int ret2;
+    size_t y = 0;
     int ret = numbers[0] - numbers[1];
     if (ret < 0)
         ret = ret * -1;
-    for (size_t i = 1; i < numbers.size(); i++) 
+
+    while (y < numbers.size())
     {
-        ret2 = numbers[i] - numbers[i + 1];
-        if (ret2 < 0)
-            ret2 = ret2 * -1;
-        if (ret2 < ret)
-            ret = ret2;
+        for (size_t i = y + 1; i < numbers.size(); i++) 
+        {
+            ret2 = numbers[y] - numbers[i];
+            if (ret2 < 0)
+                ret2 = ret2 * -1;
+            if (ret2 < ret)
+                ret = ret2;
+        }
+        y++;
     }
     return (ret);
 }
 
 int Span::longestSpan()
 {
-    return (1);
+    int ret2;
+    size_t y = 0;
+    int ret = numbers[0] - numbers[1];
+    if (ret < 0)
+        ret = ret * -1;
+
+    while (y < numbers.size())
+    {
+        for (size_t i = y + 1; i < numbers.size(); i++) 
+        {
+            ret2 = numbers[y] - numbers[i];
+            if (ret2 < 0)
+                ret2 = ret2 * -1;
+            if (ret2 > ret)
+                ret = ret2;
+        }
+        y++;
+    }
+    return (ret);
 }
