@@ -1,5 +1,26 @@
 # Cpp
 
+Deep dive into C++ and object orientation. 
+
+CPP00: Namespaces, classes, member functions, stdios streams, initialization list, static, const and more basics fundaments. 
+
+CPP01: Memory allocation, pointers to members, references, switch statement. 
+
+CPP02: Polymorphism, operator overloading and Orthodox Canonical class form. 
+
+CPP03: Inheritance. 
+
+CPP04: Subtype polimorphism, abstract classes, interfaces.
+
+CPP05: Repetition and Exceptions (try, catch). 
+
+CPP06: C++ casts. 
+
+CPP07: templates.
+
+CPP08: Templated containers, iterators and algorithms. 
+
+<!-- 
 # CPP04:
 
 
@@ -58,5 +79,5 @@ Cross-Language Compatibility: Serialized binary data can often be deserialized i
 
 While serialization and deserialization offer numerous benefits, it's essential to consider factors such as versioning, security, and potential data format changes over time. Different serialization libraries and formats (e.g., JSON, Protocol Buffers, XML) offer varying degrees of flexibility, efficiency, and compatibility.
 
-In summary, serialization and deserialization are specialized forms of scalar conversion, allowing the transformation of complex data structures into binary representations and back again. These techniques empower programmers to efficiently store, transmit, and share data while maintaining its integrity and structure across different contexts.
+In summary, serialization and deserialization are specialized forms of scalar conversion, allowing the transformation of complex data structures into binary representations and back again. These techniques empower programmers to efficiently store, transmit, and share data while maintaining its integrity and structure across different contexts. -->
 
