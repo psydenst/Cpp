@@ -12,6 +12,8 @@ class RPN
 {
     private:
         std::stack<int> stack;
+        int first_opperand;
+        int second_opperand;
         int result; 
 
     public:
@@ -19,10 +21,10 @@ class RPN
     int setCalculus(std::string &expression);
     const std::stack<int> &getStack() const;
     int getResult();
-    int doOperation(int a, int b, char op);
+    int doOperation(char op);
     char isOperator (std::string a);
     int isNumber (std::string a);
-
+    string isNegative(string token);
 
 };
 

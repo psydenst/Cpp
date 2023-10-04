@@ -1,10 +1,10 @@
-NAME = btc
+NAME = RPN
 
 SRCS = *.cpp
 
 INCLUDE = -I includes
 
-CFLAGS = -Wall -Wextra -Werror -g -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 CC = g++
 

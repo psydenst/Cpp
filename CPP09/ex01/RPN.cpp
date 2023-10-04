@@ -1,5 +1,8 @@
 #include "RPN.hpp"
 #include <fstream>
+#include <sstream>
+#include <iostream>
+
 RPN::RPN()
 {
 
@@ -8,74 +11,78 @@ RPN::RPN()
 int RPN::setCalculus(std::string &expression)
 {
     std::string token;
-    std::ifstream iss(expression);
-    int nbr1;
-    int nbr2;
-    char op;
+    std::istringstream iss(expression);
 
+    char op = '+';
+    int result = 0;
+    int index = 0;
+    this->first_opperand = 0;
+    this->second_opperand = 0;
     while (iss >> token)
     {
         if (isNumber(token))
         {
-           stack.push(atoi(token.c_str()));
+            stack.push(atoi(token.c_str()));
         }
         if ((op = isOperator(token)))
         {
             if (this->stack.size() < 2)
-                std::cerr << "Invalid arguments" << std::endl;
+            {
+                std::cerr << "Error" << std::endl;
+                return 0;
+            }
+            this->first_opperand = stack.top();
+            stack.pop();
+            if (stack.size() > 0)
+                this->second_opperand = stack.top();
+            stack.pop();
+            result = doOperation(op);
+            stack.push(result);
         }
-        nbr1 = stack.top();
-        stack.pop();
-        nbr2 = stack.top();
-        stack.pop();
-        int result = doOperation(nbr1, nbr2, op);
-        stack.push(result);
+        index++;
     }
-    return (result);
+    std::cout << result << std::endl;
+    return result;
 }
 
-int RPN::doOperation(int a, int b, char op)
+int RPN::doOperation(char op)
 {
+    int a = this->first_opperand;
+    int b = this->second_opperand;
     if (op == '+')
-        return a + b;
+        return b + a;
     if (op == '-')
-        return a - b;
+        return b - a;
     if (op == '/')
-        return a / b;
+        return b / a;
     if (op == '*')
-        return a * b;
-    return (0);
+        return b * a;
+    return 0;
 }
 
-const std::stack<int>& RPN:: getStack() const
+const std::stack<int>& RPN::getStack() const
 {
     return stack;
 }
 
 int RPN::isNumber(std::string a)
 {
-    for (unsigned int i = 0; i != a.size(); i++)
+    for (unsigned int i = 0; i < a.size(); i++)
     {
         if (!isdigit(a[i]))
             return 0;
     }
-    return (1);
+    return 1;
 }
 
-char RPN::isOperator (std::string a)
+char RPN::isOperator(std::string a)
 {
-    for (unsigned int i = 0; i != a.size(); i++)
+    for (unsigned int i = 0; i < a.size(); i++)
     {
-        if (a[i] == '+')
-            return ('+');
-        if (a[i] == '*')
-            return ('*');
-        if (a[i] == '-')
-            return ('-');
-        if (a[i] == '/')
-            return ('/');
+        if (a[i] == '+' || a[i] == '-' || a[i] == '*' || a[i] == '/')
+            return a[i];
     }
-    return (0);
+    return 0;
 }
 
 int RPN::getResult()
@@ -88,8 +95,10 @@ int main(int argc, char **argv)
     RPN rpn;
     if (argc != 2)
     {
-        cerr << "Invalid args" << std::endl;
+        std::cerr << "Invalid args" << std::endl;
         return -1;
     }
-    std::cout << rpn.setCalculus((string)argv[1]) << std::endl;   
+    std::string str = argv[1];
+    rpn.setCalculus(str);
+   // std::cout << rpn.getResult() << std::endl;
 }
