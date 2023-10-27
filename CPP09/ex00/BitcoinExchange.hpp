@@ -15,6 +15,9 @@ class BitcoinExchange
         void getExchange();
         void fill_data(const char * path);
         char * file_path;
+        int checkValue(double value);
+        int checkLine(std::string line);
+
     private:
         std::map<std::string, double> database;
 };
