@@ -5,33 +5,84 @@
 
 BitcoinExchange::BitcoinExchange()
 {
-
 }
 
 BitcoinExchange::~BitcoinExchange()
 {
-
-
 }
 
-
-void BitcoinExchange::getExchange()
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange &src)
 {
-// 
-
+    this->database = src.database;
+    return *this;
 }
 
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &src)
+{
+    *this = src;
+}
+
+void BitcoinExchange::getExchange(std::ifstream &f)
+{
+    try
+    {
+        std::string line;
+        std::string key;
+        double value;
+        std::map<std::string, double>::const_iterator cotation;
+
+        std::getline(f, line);
+        std::getline(f, line);
+        for (;!f.eof(); std::getline(f, line))
+        {
+            if (checkLine(line)) // skips in case of line out of form
+                continue;
+            key = line.substr(0, 10);
+            value = std::atof(line.substr(13).c_str());
+            if (!checkKey(key) && !checkValue(value))
+            {
+            cotation = this->database.lower_bound(key);
+            std::cout << "key " << "=> " << value << " = "
+            << cotation->second * value << std::endl;  
+            }
+        }
+    }
+    catch (std::exception &e)
+    {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+}
+
+int BitcoinExchange::checkKey(std::string key)
+{
+    int year = atoi(key.substr(0, 4).c_str());  // Extract the first 4 characters for the year.
+    int month = atoi(key.substr(5, 2).c_str()); // Extract the 2 characters for the month.
+    int day = atoi(key.substr(8, 2).c_str());   // Extract the 2 characters for the day.
+
+    if (year > 2023 || year < 0)
+        return 1;
+    if (key[4] != '-')
+        return 1;
+    if (month > 12 || month <= 0)
+        return 1;
+    if (key[7] != '-')
+        return 1;
+    if (day > 31 || day < 1)
+        return 1;
+    return 0;
+}
 
 int BitcoinExchange::checkValue(double value)
 {
 	if (value < 0)
 	{
-		std::cerr << "Error: not a positive number" << std::endl;
+		std::cerr << "Error: not a positive number (" << value << ")" << std::endl;
 		return (1);
 	}
 	else if (value > 1000)
 	{
-		std::cerr << "Error: too large a number" << std::endl;
+		std::cerr << "Error: too large a number (" << value << ")" << std::endl;
 		return (1);
 	}
 	else
@@ -56,23 +107,24 @@ void BitcoinExchange::fill_data(const char *path)
     std::string line;
     const char *joker;
 
+    std::getline(data, line);
     while (std::getline(data, line))
     {
-      //  std::cout << "line is: " << line << std::endl;
         int i = 0;
         while (isdigit(line[i]) || line[i] == '-')
             i++;
         key = line.substr(0, i);
         i++;
-        joker = line.c_str() + i; // No need to use a separate substring.
+        joker = line.c_str() + i;
         char *endptr;
         value = strtod(joker, &endptr);
-       // std::cout << "value is: " << value << std::endl;
-        if (*endptr != '\0') {
-            // Check if there was an error during conversion.
-            break;
+        if (*endptr != '\0')
+        {
             std::cerr << "Error converting value on line: " << line << std::endl;
-        } else {
+            break;
+        } 
+        else
+        {
             this->database.insert(std::pair<std::string, double>(key, value));
         }
     }
