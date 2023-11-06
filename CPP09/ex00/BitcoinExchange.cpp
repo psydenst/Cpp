@@ -43,7 +43,7 @@ void BitcoinExchange::getExchange(std::ifstream &f)
             if (!checkKey(key) && !checkValue(value))
             {
             cotation = this->database.lower_bound(key);
-            std::cout << "key " << "=> " << value << " = "
+            std::cout << key << "=> " << value << " = "
             << cotation->second * value << std::endl;  
             }
         }
