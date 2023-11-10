@@ -89,11 +89,11 @@ std::list<std::pair<int, int> >	listSort(std::string str)
 			++i;
 		lst.insert(i, std::make_pair<int,int>(extra, -1));
 	}
-    for (std::list<std::pair<int, int> >::iterator it = lst.begin(); it != lst.end(); ++it)
+/*    for (std::list<std::pair<int, int> >::iterator it = lst.begin(); it != lst.end(); ++it)
     {
         printPair(*it);
-    }
-    std::cout << std::endl;
+    } */
+//    std::cout << std::endl;
 	return (lst);
 }
 
